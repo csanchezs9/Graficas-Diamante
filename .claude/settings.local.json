@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:graficasdiamante.com)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --app --no-src-dir --import-alias \"@/*\")",
+      "Bash(npx create-next-app:*)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(npm install:*)",
+      "Bash(public/images/logos/.gitkeep)",
+      "Bash(public/images/clientes/.gitkeep)",
+      "Bash(public/images/productos/.gitkeep)",
+      "Bash(public/images/servicios/.gitkeep)",
+      "Bash(public/images/galeria/.gitkeep)",
+      "Bash(public/images/icons/.gitkeep)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
