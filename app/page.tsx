@@ -1,8 +1,153 @@
 'use client'
 
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+
+function TechnologySlider() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const technologies = [
+    {
+      image: '/images/servicios/tecnologias/tecnologia-01.jpg',
+      title: 'Tecnología de Impresión Offset',
+      description: 'Equipos de última generación para impresiones de alta calidad'
+    },
+    {
+      image: '/images/servicios/tecnologias/tecnologia-02.jpg',
+      title: 'Sistemas de Acabados Especializados',
+      description: 'Maquinaria especializada para acabados profesionales'
+    },
+    {
+      image: '/images/servicios/tecnologias/tecnologia-03.jpg',
+      title: 'Automatización de Procesos',
+      description: 'Tecnología automatizada para máxima eficiencia y precisión'
+    },
+    {
+      image: '/images/servicios/tecnologias/tecnologia-04.jpg',
+      title: 'Control de Calidad Avanzado',
+      description: 'Sistemas de control para garantizar la excelencia en cada proyecto'
+    },
+    {
+      image: '/images/servicios/tecnologias/tecnologia-05.jpg',
+      title: 'Innovación en Preprensa Digital',
+      description: 'Tecnología de punta en preparación de archivos e impresión'
+    }
+  ]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % technologies.length)
+    }, 4000)
+
+    return () => clearInterval(timer)
+  }, [technologies.length])
+
+  return (
+    <section className="relative h-[600px] md:h-[700px] lg:h-[800px] overflow-hidden bg-black">
+      {/* Title overlay */}
+      <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/60 to-transparent py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center"
+          >
+            Los Servicios que ofrecemos
+          </motion.h2>
+        </div>
+      </div>
+
+      {/* Image Slider */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={technologies[currentSlide].image}
+            alt={technologies[currentSlide].title}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/40" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Bottom content overlay */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 via-black/60 to-transparent py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                {technologies[currentSlide].title}
+              </h3>
+              <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-8">
+                {technologies[currentSlide].description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Progress indicators */}
+          <div className="flex justify-center gap-3 mt-8">
+            {technologies.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className="relative h-1 bg-white/30 rounded-full overflow-hidden"
+                style={{ width: '60px' }}
+              >
+                <motion.div
+                  className="h-full bg-white rounded-full"
+                  initial={{ width: '0%' }}
+                  animate={{
+                    width: currentSlide === index ? '100%' : '0%'
+                  }}
+                  transition={{
+                    duration: currentSlide === index ? 4 : 0.3,
+                    ease: 'linear'
+                  }}
+                />
+              </button>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center mt-8"
+          >
+            <a
+              href="/servicios"
+              className="inline-block px-8 py-4 bg-[#0046FF] text-white font-semibold rounded-lg hover:bg-[#0039CC] transition-all duration-200 shadow-xl hover:shadow-2xl hover:scale-105"
+            >
+              Ver todos los servicios
+            </a>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default function Home() {
   return (
@@ -24,7 +169,7 @@ export default function Home() {
         </div>
 
         {/* Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/50 to-white/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/30 to-white/40" />
 
         {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
@@ -84,7 +229,7 @@ export default function Home() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2 text-gray-400"
+            className="flex flex-col items-center gap-2 text-white"
           >
             <span className="text-sm font-medium">Descubre más</span>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,10 +249,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
               Nuestro Trabajo
             </h2>
-            <p className="text-base text-gray-600">
+            <p className="text-lg md:text-xl text-gray-600">
               Calidad y precisión en cada impresión
             </p>
           </motion.div>
@@ -131,9 +276,10 @@ export default function Home() {
                 {Array.from({ length: 16 }, (_, i) => (
                   <div key={`${setIndex}-${i}`} className="relative w-72 h-48 flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src={`/images/productos/producto-${String(i + 1).padStart(2, '0')}.jpg`}
+                      src={`/images/productos_sin_fondo/producto-${String(i + 1).padStart(2, '0')}.png`}
                       alt={`Producto ${i + 1}`}
                       fill
+                      sizes="288px"
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
@@ -143,10 +289,10 @@ export default function Home() {
           </motion.div>
 
           {/* Overlay with button on hover */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500 flex items-center justify-center">
+          <div className="absolute inset-0 transition-all duration-500 flex items-center justify-center pointer-events-none">
             <a
               href="/productos"
-              className="px-6 py-3 bg-white/90 text-gray-700 font-medium rounded-lg opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-500 shadow-md hover:bg-white hover:text-gray-900"
+              className="px-6 py-3 bg-white/90 text-gray-700 font-medium rounded-lg opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-500 shadow-md hover:bg-white hover:text-gray-900 pointer-events-auto"
             >
               Ver más
             </a>
@@ -154,8 +300,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Services Section - Technology Slider */}
+      <TechnologySlider />
+
       {/* Clients Section */}
-      <section className="relative py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <section className="relative py-16 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -164,10 +313,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
               Confían en nosotros
             </h2>
-            <p className="text-base text-gray-600">
+            <p className="text-lg md:text-xl text-gray-600">
               Marcas líderes que eligen calidad y excelencia
             </p>
           </motion.div>
@@ -319,6 +468,7 @@ function SimpleClientGrid() {
                     src={client.logo}
                     alt={client.name}
                     fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 14vw"
                     className="object-contain p-2 drop-shadow-2xl"
                   />
                 </div>

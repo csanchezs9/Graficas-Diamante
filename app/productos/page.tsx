@@ -72,6 +72,137 @@ const products: Product[] = [
   },
 ]
 
+// Packaging Carousel Component
+function PackagingCollage() {
+  const [currentPage, setCurrentPage] = useState(0)
+  const itemsPerPage = 4
+  const totalItems = 16 // 16 imágenes (4 páginas × 4)
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
+
+  const nextSlide = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages)
+  }
+
+  const prevSlide = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages)
+  }
+
+  return (
+    <section className="relative py-20 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 text-center mb-12 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            Somos Expertos en{' '}
+            <span className="text-[#0046FF]">Packaging</span>
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            Más de 50 años transformando ideas en soluciones gráficas de alta calidad
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Carousel Container */}
+      <div className="relative max-w-7xl mx-auto px-6">
+        <div className="relative h-[500px] flex items-center">
+          {/* Previous Button */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-0 z-20 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-[#0046FF] hover:text-white transition-all duration-300 group"
+            aria-label="Previous"
+          >
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Carousel Track - Todas las imágenes pre-renderizadas */}
+          <div className="flex-1 overflow-hidden mx-20 max-w-[1152px] mx-auto">
+            <motion.div
+              className="flex"
+              animate={{
+                x: `-${currentPage * 1152}px`
+              }}
+              transition={{
+                type: "tween",
+                duration: 0.4,
+                ease: "easeInOut"
+              }}
+            >
+              {/* Renderizar las 4 páginas completas */}
+              {Array.from({ length: totalPages }).map((_, pageIdx) => (
+                <div key={pageIdx} className="flex gap-6 flex-shrink-0" style={{ width: '1152px' }}>
+                  {Array.from({ length: itemsPerPage }).map((_, itemIdx) => {
+                    const imageIndex = pageIdx * itemsPerPage + itemIdx
+
+                    return (
+                      <motion.div
+                        key={imageIndex}
+                        whileHover={{ scale: 1.1, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className="relative w-[270px] h-[270px] flex-shrink-0"
+                      >
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={`/images/productos_sin_fondo/producto-${(imageIndex + 1).toString().padStart(2, '0')}.png`}
+                            alt={`Producto ${imageIndex + 1}`}
+                            fill
+                            sizes="270px"
+                            className="object-contain"
+                            style={{
+                              filter: 'drop-shadow(0 20px 40px rgba(0, 70, 255, 0.15))',
+                            }}
+                          />
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Next Button */}
+          <button
+            onClick={nextSlide}
+            className="absolute right-0 z-20 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-[#0046FF] hover:text-white transition-all duration-300 group"
+            aria-label="Next"
+          >
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Pagination Dots */}
+        <div className="flex justify-center gap-3 mt-10">
+          {Array.from({ length: totalPages }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentPage(idx)}
+              className={`h-3 rounded-full transition-all duration-300 ${
+                currentPage === idx
+                  ? 'w-10 bg-[#0046FF]'
+                  : 'w-3 bg-gray-300 hover:bg-gray-400'
+              }`}
+              aria-label={`Go to page ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function ProductosPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
@@ -125,6 +256,7 @@ export default function ProductosPage() {
                       src={product.image}
                       alt={product.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                       className="object-cover"
                     />
                     {/* Name overlay */}
@@ -199,6 +331,7 @@ export default function ProductosPage() {
                       src={product.image}
                       alt={product.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                       className="object-cover"
                     />
                     {/* Name overlay */}
@@ -275,6 +408,7 @@ export default function ProductosPage() {
                     src={selectedProduct.image}
                     alt={selectedProduct.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </div>
@@ -348,99 +482,7 @@ export default function ProductosPage() {
       </AnimatePresence>
 
       {/* Packaging Expertise Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-100 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-              Somos Expertos en{' '}
-              <span className="text-[#0046FF]">Packaging</span>
-            </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              Más de 50 años transformando ideas en soluciones gráficas de alta calidad
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Infinite Marquee - First Row (Left to Right) */}
-        <div className="relative mb-6">
-          <motion.div
-            className="flex gap-6"
-            animate={{
-              x: [0, -1920],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 30,
-                ease: "linear",
-              },
-            }}
-          >
-            {[...Array(3)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-6 flex-shrink-0">
-                {[9, 10, 11, 12].map((num) => (
-                  <div
-                    key={`${setIndex}-${num}`}
-                    className="relative w-80 h-56 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 group"
-                  >
-                    <Image
-                      src={`/images/productos/producto-${num.toString().padStart(2, '0')}.jpg`}
-                      alt={`Producto ${num}`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                ))}
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Infinite Marquee - Second Row (Right to Left) */}
-        <div className="relative">
-          <motion.div
-            className="flex gap-6"
-            animate={{
-              x: [-1920, 0],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 25,
-                ease: "linear",
-              },
-            }}
-          >
-            {[...Array(3)].map((_, setIndex) => (
-              <div key={setIndex} className="flex gap-6 flex-shrink-0">
-                {[13, 14, 15, 16].map((num) => (
-                  <div
-                    key={`${setIndex}-${num}`}
-                    className="relative w-80 h-56 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 group"
-                  >
-                    <Image
-                      src={`/images/productos/producto-${num.toString().padStart(2, '0')}.jpg`}
-                      alt={`Producto ${num}`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                ))}
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <PackagingCollage />
 
       {/* CTA Section */}
       <section className="py-20 bg-gray-900">
