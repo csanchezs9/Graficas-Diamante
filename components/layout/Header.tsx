@@ -60,7 +60,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation - Centered */}
-          <nav className="hidden lg:flex items-center justify-center flex-1 gap-8 px-8">
+          <nav className="hidden lg:flex items-center justify-center flex-1 gap-8 px-8" style={{ fontFamily: 'var(--font-outfit)' }}>
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -87,6 +87,7 @@ export default function Header() {
             <button
               onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
               className="flex items-center gap-2 text-base font-medium text-gray-700 hover:text-[#0046FF] transition-colors"
+              style={{ fontFamily: 'var(--font-outfit)' }}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -132,7 +133,7 @@ export default function Header() {
             transition={{ duration: 0.3 }}
             className="lg:hidden bg-white border-t border-gray-100"
           >
-            <nav className="px-4 py-6 space-y-2">
+            <nav className="px-4 py-6 space-y-2" style={{ fontFamily: 'var(--font-outfit)' }}>
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -143,7 +144,7 @@ export default function Header() {
                       ? 'text-white'
                       : 'text-gray-700 hover:bg-gray-50'
                   }`}
-                  style={isActive(item.href) ? { backgroundColor: 'var(--brand-blue)' } : {}}
+                  style={isActive(item.href) ? { backgroundColor: 'var(--brand-blue)', fontFamily: 'var(--font-outfit)' } : { fontFamily: 'var(--font-outfit)' }}
                 >
                   {item.label}
                 </Link>

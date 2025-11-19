@@ -153,7 +153,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-blue-50/30 to-white">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
         {/* Video Background - URL pendiente */}
         <div className="absolute inset-0">
           <video
@@ -168,8 +168,8 @@ export default function Home() {
           </video>
         </div>
 
-        {/* Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/30 to-white/40" />
+        {/* Overlay Gradient - Más oscuro */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60" />
 
         {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
@@ -178,7 +178,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 text-gray-800">
+            <h1
+              className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 text-white"
+              style={{
+                textShadow: '0 0 20px rgba(0, 0, 0, 0.9), 2px 2px 8px rgba(0, 0, 0, 0.8), -1px -1px 4px rgba(0, 0, 0, 0.6)'
+              }}
+            >
               Impactamos las marcas de
               <br />
               nuestros clientes con
@@ -193,7 +198,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-12"
+            className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12"
+            style={{
+              textShadow: '1px 1px 3px rgba(0, 0, 0, 0.7)'
+            }}
           >
             Más de 50 años convirtiendo ideas en realidades impresas
           </motion.p>
@@ -249,7 +257,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
               Nuestro Trabajo
             </h2>
             <p className="text-lg md:text-xl text-gray-600">
@@ -261,7 +269,7 @@ export default function Home() {
         {/* Carousel Container */}
         <div className="relative group">
           <motion.div
-            className="flex gap-6 py-4"
+            className="flex gap-8 py-8"
             animate={{
               x: [0, -2000],
             }}
@@ -274,13 +282,16 @@ export default function Home() {
             {[...Array(4)].map((_, setIndex) => (
               <React.Fragment key={setIndex}>
                 {Array.from({ length: 16 }, (_, i) => (
-                  <div key={`${setIndex}-${i}`} className="relative w-72 h-48 flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
+                  <div key={`${setIndex}-${i}`} className="relative w-80 h-64 flex-shrink-0">
                     <Image
                       src={`/images/productos_sin_fondo/producto-${String(i + 1).padStart(2, '0')}.png`}
                       alt={`Producto ${i + 1}`}
                       fill
-                      sizes="288px"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="320px"
+                      className="object-contain transition-transform duration-300 group-hover:scale-110"
+                      style={{
+                        filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15))',
+                      }}
                     />
                   </div>
                 ))}
@@ -313,7 +324,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
               Confían en nosotros
             </h2>
             <p className="text-lg md:text-xl text-gray-600">
