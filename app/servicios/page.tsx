@@ -41,7 +41,7 @@ const technologies = [
   }
 ]
 
-function TechnologySection({ tech, index }: { tech: typeof technologies[0], index: number }) {
+function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[0], index: number, isLast: boolean }) {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -53,12 +53,13 @@ function TechnologySection({ tech, index }: { tech: typeof technologies[0], inde
   const videoY = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50])
 
   const isEven = index % 2 === 0
+  const isFirst = index === 0
 
   return (
     <motion.section
       ref={ref}
       style={{ opacity }}
-      className="relative flex items-center py-12 md:py-16 overflow-hidden bg-black"
+      className={`relative flex items-center overflow-hidden bg-black ${isFirst ? 'pt-2' : ''} ${isLast ? 'pb-16 md:pb-20' : ''}`}
     >
       <div className="max-w-7xl mx-auto px-6 w-full">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
@@ -106,7 +107,7 @@ function TechnologySection({ tech, index }: { tech: typeof technologies[0], inde
               {/* Badge */}
               <motion.div
                 whileHover={{ scale: 1.05, x: isEven ? 10 : -10 }}
-                className="inline-block mb-6"
+                className="inline-block mb-3"
               >
                 <span className="px-4 py-2 bg-[#0046FF]/10 backdrop-blur-sm rounded-full text-[#0046FF] text-sm font-semibold border border-[#0046FF]/20">
                   Tecnología #{index + 1}
@@ -115,7 +116,7 @@ function TechnologySection({ tech, index }: { tech: typeof technologies[0], inde
 
               {/* Title */}
               <motion.h2
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
@@ -126,7 +127,7 @@ function TechnologySection({ tech, index }: { tech: typeof technologies[0], inde
 
               {/* Subtitle */}
               <motion.h3
-                className="text-xl md:text-2xl font-semibold text-[#0046FF] mb-6"
+                className="text-xl md:text-2xl font-semibold text-[#0046FF] mb-3"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
@@ -137,7 +138,7 @@ function TechnologySection({ tech, index }: { tech: typeof technologies[0], inde
 
               {/* Description */}
               <motion.p
-                className="text-base md:text-lg text-gray-400 leading-relaxed mb-8"
+                className="text-base md:text-lg text-gray-400 leading-relaxed mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
@@ -190,7 +191,7 @@ export default function ServiciosPage() {
   return (
     <div className="min-h-screen bg-black">
       {/* Header Section */}
-      <section className="pt-28 pb-8 bg-black">
+      <section className="pt-28 pb-4 bg-black">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3"
@@ -214,7 +215,7 @@ export default function ServiciosPage() {
 
       {/* Technology Sections */}
       {technologies.map((tech, index) => (
-        <TechnologySection key={tech.id} tech={tech} index={index} />
+        <TechnologySection key={tech.id} tech={tech} index={index} isLast={index === technologies.length - 1} />
       ))}
     </div>
   )

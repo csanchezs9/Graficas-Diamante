@@ -309,7 +309,7 @@ export default function ProductosPage() {
                           </li>
                         ))}
                       </ul>
-                      <p className="text-sm text-[#0046FF] mt-3 font-medium">Ampliar</p>
+                      <p className="text-sm text-white mt-3 font-semibold bg-[#0046FF] px-4 py-1.5 rounded-full inline-block">Ampliar</p>
                     </div>
 
                     {/* Blue accent line */}
@@ -394,7 +394,7 @@ export default function ProductosPage() {
                           </li>
                         ))}
                       </ul>
-                      <p className="text-sm text-[#0046FF] mt-3 font-medium">Ampliar</p>
+                      <p className="text-sm text-white mt-3 font-semibold bg-[#0046FF] px-4 py-1.5 rounded-full inline-block">Ampliar</p>
                     </div>
 
                     {/* Blue accent line */}
