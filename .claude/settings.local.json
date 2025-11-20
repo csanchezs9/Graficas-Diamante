@@ -30,7 +30,12 @@
       "Bash(npm run build:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(vercel --version:*)",
+      "Bash(vercel --prod --yes:*)",
+      "Bash(dir /s /b *.mp4 *.webm 2)",
+      "Bash(findstr:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

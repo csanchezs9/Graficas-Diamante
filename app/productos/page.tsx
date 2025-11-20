@@ -91,8 +91,8 @@ function PackagingCollage() {
   const itemsPerPage = isMobile ? 2 : 4 // 2 en móvil, 4 en desktop
   const totalItems = 16 // 16 imágenes
   const totalPages = Math.ceil(totalItems / itemsPerPage)
-  const imageSize = isMobile ? 140 : 280 // Más pequeño en móvil para que quepan 2
-  const gap = isMobile ? 16 : 16 // gap consistente
+  const imageSize = isMobile ? 140 : 260 // Más pequeño en móvil para que quepan 2
+  const gap = isMobile ? 16 : 24 // gap consistente
   const containerWidth = (imageSize * itemsPerPage) + (gap * (itemsPerPage - 1))
 
   const nextSlide = () => {
@@ -142,7 +142,7 @@ function PackagingCollage() {
           </button>
 
           {/* Carousel Track - Todas las imágenes pre-renderizadas */}
-          <div className="overflow-hidden mx-10 md:mx-20 flex-1" style={{ maxWidth: `${containerWidth}px` }}>
+          <div className="overflow-hidden mx-10 md:mx-20" style={{ width: `${containerWidth}px`, maxWidth: '100%' }}>
             <motion.div
               className="flex"
               animate={{
