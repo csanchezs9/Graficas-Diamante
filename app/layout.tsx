@@ -44,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable}`}>
+    <html lang="es" className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable}`} data-scroll-behavior="smooth">
       <body className="antialiased">
         <Header />
         <main>

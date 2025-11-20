@@ -75,6 +75,7 @@ const products: Product[] = [
 // Packaging Carousel Component
 function PackagingCollage() {
   const [currentPage, setCurrentPage] = useState(0)
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const itemsPerPage = 4
   const totalItems = 16 // 16 imágenes (4 páginas × 4)
   const totalPages = Math.ceil(totalItems / itemsPerPage)
@@ -99,14 +100,14 @@ function PackagingCollage() {
 
       <div className="max-w-7xl mx-auto px-6 text-center mb-12 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5 }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
             Somos Expertos en{' '}
-            <span className="text-[#0046FF]">Packaging</span>
+            <span className="bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">Packaging</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             Más de 50 años transformando ideas en soluciones gráficas de alta calidad
@@ -152,8 +153,9 @@ function PackagingCollage() {
                         key={imageIndex}
                         whileHover={{ scale: 1.1, y: -10 }}
                         transition={{ duration: 0.3 }}
-                        className="relative flex-shrink-0"
+                        className="relative flex-shrink-0 cursor-pointer"
                         style={{ width: `${imageSize}px`, height: `${imageSize}px` }}
+                        onClick={() => setSelectedImage(imageIndex + 1)}
                       >
                         <div className="relative w-full h-full">
                           <Image
@@ -161,6 +163,7 @@ function PackagingCollage() {
                             alt={`Producto ${imageIndex + 1}`}
                             fill
                             sizes="400px"
+                            loading={pageIdx === 0 && itemIdx < 2 ? "eager" : "lazy"}
                             className="object-contain"
                             style={{
                               filter: 'drop-shadow(0 20px 40px rgba(0, 70, 255, 0.15))',
@@ -203,6 +206,120 @@ function PackagingCollage() {
           ))}
         </div>
       </div>
+
+      {/* Image Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md"
+            onClick={() => setSelectedImage(null)}
+          >
+            {/* Close Button - Fixed position */}
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ delay: 0.2 }}
+              onClick={() => setSelectedImage(null)}
+              className="fixed top-6 right-6 z-50 w-14 h-14 bg-white hover:bg-gray-100 rounded-full flex items-center justify-center text-gray-800 transition-all shadow-2xl hover:scale-110"
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </motion.button>
+
+            {/* Image counter - Fixed position top */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ delay: 0.2 }}
+              className="fixed top-6 left-1/2 -translate-x-1/2 z-50 px-8 py-3 bg-white/95 backdrop-blur-sm rounded-full shadow-2xl"
+            >
+              <p className="text-base font-bold text-gray-800">
+                {selectedImage} / 16
+              </p>
+            </motion.div>
+
+            {/* Main Content Container */}
+            <div className="w-full h-full flex items-center justify-center p-4 md:p-8 lg:p-12">
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.85, opacity: 0 }}
+                transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                className="relative w-full h-full max-w-6xl max-h-[85vh]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Image Container */}
+                <div className="relative w-full h-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-white/20">
+                  <Image
+                    src={`/images/productos_sin_fondo/producto-${selectedImage.toString().padStart(2, '0')}.png`}
+                    alt={`Producto ${selectedImage}`}
+                    fill
+                    sizes="(max-width: 768px) 95vw, (max-width: 1200px) 85vw, 1200px"
+                    className="object-contain p-6 md:p-12"
+                    style={{
+                      filter: 'drop-shadow(0 25px 50px rgba(0, 70, 255, 0.25))',
+                    }}
+                  />
+                </div>
+
+                {/* Navigation arrows - Outside of image container */}
+                {selectedImage > 1 && (
+                  <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setSelectedImage(selectedImage - 1)
+                    }}
+                    className="absolute -left-4 md:-left-20 top-1/2 -translate-y-1/2 w-14 h-14 md:w-16 md:h-16 bg-white hover:bg-[#0046FF] text-gray-800 hover:text-white rounded-full flex items-center justify-center transition-all shadow-2xl hover:scale-110"
+                  >
+                    <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </motion.button>
+                )}
+
+                {selectedImage < 16 && (
+                  <motion.button
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setSelectedImage(selectedImage + 1)
+                    }}
+                    className="absolute -right-4 md:-right-20 top-1/2 -translate-y-1/2 w-14 h-14 md:w-16 md:h-16 bg-white hover:bg-[#0046FF] text-gray-800 hover:text-white rounded-full flex items-center justify-center transition-all shadow-2xl hover:scale-110"
+                  >
+                    <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </motion.button>
+                )}
+              </motion.div>
+            </div>
+
+            {/* Hint text at bottom */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ delay: 0.4 }}
+              className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
+            >
+              <p className="text-white/60 text-sm font-medium">
+                Haz clic fuera de la imagen para cerrar
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
@@ -216,13 +333,13 @@ export default function ProductosPage() {
       <section className="relative py-12 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-center"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-              Nuestros Productos
+              Nuestros <span className="bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">Productos</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Somos especialistas en Packaging, etiquetas, catálogos, impresión lenticular,
@@ -240,10 +357,9 @@ export default function ProductosPage() {
             {products.slice(0, 4).map((product, index) => (
               <motion.div
                 key={product.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
                 className="group"
                 style={{ perspective: '1000px' }}
               >
@@ -272,6 +388,7 @@ export default function ProductosPage() {
                           alt={product.name}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          loading="eager"
                           className="object-cover"
                         />
                       </div>
@@ -279,7 +396,7 @@ export default function ProductosPage() {
 
                     {/* Ver más at bottom */}
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <p className="text-sm text-gray-500 font-medium">Ver más</p>
+                      <p className="text-sm font-medium bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">Ver más</p>
                     </div>
                   </div>
 
@@ -325,10 +442,9 @@ export default function ProductosPage() {
             {products.slice(4).map((product, index) => (
               <motion.div
                 key={product.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (index + 4) * 0.1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                 className="group"
                 style={{ perspective: '1000px' }}
               >
@@ -357,6 +473,7 @@ export default function ProductosPage() {
                           alt={product.name}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          loading="eager"
                           className="object-cover"
                         />
                       </div>
@@ -364,7 +481,7 @@ export default function ProductosPage() {
 
                     {/* Ver más at bottom */}
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <p className="text-sm text-gray-500 font-medium">Ver más</p>
+                      <p className="text-sm font-medium bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">Ver más</p>
                     </div>
                   </div>
 
@@ -530,10 +647,10 @@ export default function ProductosPage() {
 
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
               ¿Necesitas un producto personalizado?
