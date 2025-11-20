@@ -5,7 +5,20 @@
       "Bash(\"C:\\Users\\USER\\Documents\\ffmpeg-8.0-essentials_build\\ffmpeg-8.0-essentials_build\\bin\\ffmpeg.exe\" -i \"public/images/videos_tecnologias/Guillotina-poster.jpg\" -vf \"scale=''''min(960,iw)'''':''''min(540,ih)'''':force_original_aspect_ratio=decrease\" -c:v libwebp -quality 75 \"public/images/videos_tecnologias/Guillotina-poster.webp\" -y)",
       "Bash(\"C:\\Users\\USER\\Documents\\ffmpeg-8.0-essentials_build\\ffmpeg-8.0-essentials_build\\bin\\ffmpeg.exe\" -i \"public/images/videos_tecnologias/heidelbergxl75-poster.jpg\" -vf \"scale=''''min(960,iw)'''':''''min(540,ih)'''':force_original_aspect_ratio=decrease\" -c:v libwebp -quality 75 \"public/images/videos_tecnologias/heidelbergxl75-poster.webp\" -y)",
       "Bash(\"C:\\Users\\USER\\Documents\\ffmpeg-8.0-essentials_build\\ffmpeg-8.0-essentials_build\\bin\\ffmpeg.exe\" -i \"public/images/videos_tecnologias/impresion-poster.jpg\" -vf \"scale=''''min(960,iw)'''':''''min(540,ih)'''':force_original_aspect_ratio=decrease\" -c:v libwebp -quality 75 \"public/images/videos_tecnologias/impresion-poster.webp\" -y)",
-      "Bash(\"C:\\Users\\USER\\Documents\\ffmpeg-8.0-essentials_build\\ffmpeg-8.0-essentials_build\\bin\\ffmpeg.exe\" -i \"public/images/videos_tecnologias/pegadora-poster.jpg\" -vf \"scale=''''min(960,iw)'''':''''min(540,ih)'''':force_original_aspect_ratio=decrease\" -c:v libwebp -quality 75 \"public/images/videos_tecnologias/pegadora-poster.webp\" -y)"
+      "Bash(\"C:\\Users\\USER\\Documents\\ffmpeg-8.0-essentials_build\\ffmpeg-8.0-essentials_build\\bin\\ffmpeg.exe\" -i \"public/images/videos_tecnologias/pegadora-poster.jpg\" -vf \"scale=''''min(960,iw)'''':''''min(540,ih)'''':force_original_aspect_ratio=decrease\" -c:v libwebp -quality 75 \"public/images/videos_tecnologias/pegadora-poster.webp\" -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_avon.png -c:v libwebp -quality 85 public/images/clientes/avon.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_chocolates.png -c:v libwebp -quality 85 public/images/clientes/chocolates.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_corona.png -c:v libwebp -quality 85 public/images/clientes/corona.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_crystal.png -c:v libwebp -quality 85 public/images/clientes/crystal.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_ecar.png -c:v libwebp -quality 85 public/images/clientes/ecar.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_familia.png -c:v libwebp -quality 85 public/images/clientes/familia.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_gricoat.png -c:v libwebp -quality 85 public/images/clientes/gricoat.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_leonisa.png -c:v libwebp -quality 85 public/images/clientes/leonisa.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_nutresa.png -c:v libwebp -quality 85 public/images/clientes/nutresa.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_pecoda.png -c:v libwebp -quality 85 public/images/clientes/pecoda.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_prebel.png -c:v libwebp -quality 85 public/images/clientes/prebel.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_san-fiorino.png -c:v libwebp -quality 85 public/images/clientes/san-fiorino.webp -y)",
+      "Bash(C:UsersUSERDocumentsffmpeg-8.0-essentials_buildffmpeg-8.0-essentials_buildbinffmpeg.exe -i temp_santa-elena.png -c:v libwebp -quality 85 public/images/clientes/santa-elena.webp -y)"
     ],
     "deny": [],
     "ask": []
