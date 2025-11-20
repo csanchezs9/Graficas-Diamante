@@ -172,7 +172,7 @@ function PackagingCollage() {
                       >
                         <div className="relative w-full h-full">
                           <Image
-                            src={`/images/productos_sin_fondo/producto-${(imageIndex + 1).toString().padStart(2, '0')}.png`}
+                            src={`/images/productos_sin_fondo/producto-${(imageIndex + 1).toString().padStart(2, '0')}.webp`}
                             alt={`Producto ${imageIndex + 1}`}
                             fill
                             sizes={`${imageSize}px`}
@@ -270,7 +270,7 @@ function PackagingCollage() {
                 {/* Image Container */}
                 <div className="relative w-full h-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-white/20">
                   <Image
-                    src={`/images/productos_sin_fondo/producto-${selectedImage.toString().padStart(2, '0')}.png`}
+                    src={`/images/productos_sin_fondo/producto-${selectedImage.toString().padStart(2, '0')}.webp`}
                     alt={`Producto ${selectedImage}`}
                     fill
                     sizes="(max-width: 768px) 95vw, (max-width: 1200px) 85vw, 1200px"

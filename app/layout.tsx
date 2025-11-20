@@ -46,6 +46,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable}`} data-scroll-behavior="smooth">
+      <head>
+        {/* Preload recursos críticos para mejorar LCP y FCP */}
+        <link rel="preload" href="/images/hero/video-poster.jpg" as="image" type="image/jpeg" />
+        <link rel="preload" href="/images/logos/logo-principal.png" as="image" type="image/png" />
+        <link rel="preload" href="/images/hero/video.webm" as="video" type="video/webm" />
+      </head>
       <body className="antialiased">
         <Header />
         <main>
