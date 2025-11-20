@@ -161,31 +161,24 @@ export default function Home() {
         {/* Light overlay */}
         <div className="absolute inset-0 bg-black/20" />
 
-        {/* Enganche abajo izquierda */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="absolute bottom-16 md:bottom-24 left-4 md:left-8 lg:left-16 z-10 max-w-lg"
-        >
+        {/* Enganche abajo izquierda - Optimizado para LCP */}
+        <div className="hero-lcp-text absolute bottom-16 md:bottom-24 left-4 md:left-8 lg:left-16 z-10 max-w-lg">
           <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white drop-shadow-2xl leading-tight mb-4 md:mb-6">
             Más de 50 años
             <br />
             Imprimiendo Calidad
           </h2>
 
-          <motion.a
+          <a
             href="#hero-content"
-            whileHover={{ scale: 1.05, x: 5 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-white/95 backdrop-blur-sm text-gray-900 text-sm md:text-base font-semibold rounded-lg shadow-xl hover:shadow-2xl transition-all"
+            className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-white/95 backdrop-blur-sm text-gray-900 text-sm md:text-base font-semibold rounded-lg shadow-xl hover:shadow-2xl transition-all hover:scale-105 active:scale-95"
           >
             <span>Descubre más</span>
             <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
 
         {/* Scroll Indicator */}
         <motion.div

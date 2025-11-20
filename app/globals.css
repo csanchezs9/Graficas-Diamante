@@ -109,6 +109,22 @@ html {
   perspective: 1000px;
 }
 
+/* Hero LCP Animation - Optimizada para reducir retraso de renderizado */
+@keyframes hero-fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-lcp-text {
+  animation: hero-fade-in-left 0.8s ease-out 0.5s both;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
