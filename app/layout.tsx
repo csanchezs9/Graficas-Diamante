@@ -51,8 +51,28 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
+        {/* Critical CSS inline para above-the-fold */}
+        <style dangerouslySetInnerHTML={{__html: `
+          body{margin:0;padding:0;min-height:100vh}
+          *{box-sizing:border-box}
+          .min-h-screen{min-height:100vh}
+          .relative{position:relative}
+          .absolute{position:absolute}
+          .inset-0{top:0;right:0;bottom:0;left:0}
+          .overflow-hidden{overflow:hidden}
+          .flex{display:flex}
+          .items-center{align-items:center}
+          .justify-center{justify-content:center}
+          .w-full{width:100%}
+          .h-full{height:100%}
+          .object-cover{object-fit:cover}
+          .bg-black{background-color:#000}
+          .bg-white{background-color:#fff}
+          .text-white{color:#fff}
+        `}} />
+
         {/* Preload recursos críticos para mejorar LCP y FCP */}
-        <link rel="preload" href="/images/hero/video-poster.jpg" as="image" type="image/jpeg" />
+        <link rel="preload" href="/images/hero/video-poster.webp" as="image" type="image/webp" />
         <link rel="preload" href="/images/logos/logo-principal.webp" as="image" type="image/webp" />
       </head>
       <body className="antialiased">

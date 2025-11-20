@@ -150,7 +150,7 @@ export default function Home() {
             loop
             playsInline
             preload="auto"
-            poster="/images/hero/video-poster.jpg"
+            poster="/images/hero/video-poster.webp"
             className="w-full h-full object-cover"
           >
             <source src="/images/hero/video.webm" type="video/webm" />

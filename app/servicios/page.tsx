@@ -144,7 +144,7 @@ function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[
                   muted
                   playsInline
                   preload={isFirst ? "auto" : "metadata"}
-                  poster={`${tech.video}-poster.jpg`}
+                  poster={`${tech.video}-poster.webp`}
                   className="w-full h-auto"
                 >
                   <source src={`${tech.video}.webm`} type="video/webm" />
