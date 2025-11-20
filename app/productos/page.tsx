@@ -76,12 +76,24 @@ const products: Product[] = [
 function PackagingCollage() {
   const [currentPage, setCurrentPage] = useState(0)
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
-  const itemsPerPage = 4
-  const totalItems = 16 // 16 imágenes (4 páginas × 4)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detectar si es móvil
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const itemsPerPage = isMobile ? 2 : 4 // 2 en móvil, 4 en desktop
+  const totalItems = 16 // 16 imágenes
   const totalPages = Math.ceil(totalItems / itemsPerPage)
-  const imageSize = 280 // Tamaño de cada imagen (reducido de 400 a 280)
-  const gap = 16 // gap-4 = 16px (reducido de 32 a 16)
-  const containerWidth = (imageSize * itemsPerPage) + (gap * (itemsPerPage - 1)) // 1168px
+  const imageSize = isMobile ? 160 : 280 // Más pequeño en móvil
+  const gap = isMobile ? 12 : 16 // gap más pequeño en móvil
+  const containerWidth = (imageSize * itemsPerPage) + (gap * (itemsPerPage - 1))
 
   const nextSlide = () => {
     setCurrentPage((prev) => (prev + 1) % totalPages)
@@ -116,21 +128,21 @@ function PackagingCollage() {
       </div>
 
       {/* Carousel Container */}
-      <div className="relative w-full mx-auto px-6">
-        <div className="relative h-[480px] flex items-center justify-center" style={{ maxWidth: `${containerWidth + 160}px`, margin: '0 auto' }}>
+      <div className="relative w-full mx-auto px-4 md:px-6">
+        <div className="relative h-[200px] md:h-[320px] lg:h-[480px] flex items-center justify-center" style={{ maxWidth: `${containerWidth + (isMobile ? 80 : 160)}px`, margin: '0 auto' }}>
           {/* Previous Button */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 z-20 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-[#0046FF] hover:text-white transition-all duration-300 group"
+            className="absolute left-0 z-20 w-10 h-10 md:w-14 md:h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-[#0046FF] hover:text-white transition-all duration-300 group"
             aria-label="Previous"
           >
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           {/* Carousel Track - Todas las imágenes pre-renderizadas */}
-          <div className="overflow-hidden mx-20" style={{ maxWidth: `${containerWidth}px` }}>
+          <div className="overflow-hidden mx-12 md:mx-20" style={{ maxWidth: `${containerWidth}px` }}>
             <motion.div
               className="flex"
               animate={{
@@ -142,11 +154,12 @@ function PackagingCollage() {
                 ease: "easeInOut"
               }}
             >
-              {/* Renderizar las 4 páginas completas */}
+              {/* Renderizar todas las páginas */}
               {Array.from({ length: totalPages }).map((_, pageIdx) => (
-                <div key={pageIdx} className="flex gap-4 flex-shrink-0" style={{ width: `${containerWidth}px` }}>
+                <div key={pageIdx} className="flex flex-shrink-0" style={{ width: `${containerWidth}px`, gap: `${gap}px` }}>
                   {Array.from({ length: itemsPerPage }).map((_, itemIdx) => {
                     const imageIndex = pageIdx * itemsPerPage + itemIdx
+                    if (imageIndex >= totalItems) return null
 
                     return (
                       <motion.div
@@ -162,7 +175,7 @@ function PackagingCollage() {
                             src={`/images/productos_sin_fondo/producto-${(imageIndex + 1).toString().padStart(2, '0')}.png`}
                             alt={`Producto ${imageIndex + 1}`}
                             fill
-                            sizes="280px"
+                            sizes={`${imageSize}px`}
                             loading={pageIdx === 0 && itemIdx < 2 ? "eager" : "lazy"}
                             className="object-contain"
                             style={{
@@ -181,25 +194,25 @@ function PackagingCollage() {
           {/* Next Button */}
           <button
             onClick={nextSlide}
-            className="absolute right-0 z-20 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-[#0046FF] hover:text-white transition-all duration-300 group"
+            className="absolute right-0 z-20 w-10 h-10 md:w-14 md:h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-[#0046FF] hover:text-white transition-all duration-300 group"
             aria-label="Next"
           >
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center gap-3 mt-10">
+        <div className="flex justify-center gap-2 md:gap-3 mt-6 md:mt-10">
           {Array.from({ length: totalPages }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentPage(idx)}
-              className={`h-3 rounded-full transition-all duration-300 ${
+              className={`h-2 md:h-3 rounded-full transition-all duration-300 ${
                 currentPage === idx
-                  ? 'w-10 bg-[#0046FF]'
-                  : 'w-3 bg-gray-300 hover:bg-gray-400'
+                  ? 'w-8 md:w-10 bg-[#0046FF]'
+                  : 'w-2 md:w-3 bg-gray-300 hover:bg-gray-400'
               }`}
               aria-label={`Go to page ${idx + 1}`}
             />
