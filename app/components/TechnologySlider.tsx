@@ -32,27 +32,27 @@ export default function TechnologySlider() {
 
   const technologies = [
     {
-      image: '/images/servicios/tecnologias/tecnologia-01.jpg',
+      image: '/images/servicios/tecnologias/tecnologia-01.webp',
       title: 'Tecnología de Impresión Offset',
       description: 'Equipos de última generación para impresiones de alta calidad'
     },
     {
-      image: '/images/servicios/tecnologias/tecnologia-02.jpg',
+      image: '/images/servicios/tecnologias/tecnologia-02.webp',
       title: 'Sistemas de Acabados Especializados',
       description: 'Maquinaria especializada para acabados profesionales'
     },
     {
-      image: '/images/servicios/tecnologias/tecnologia-03.jpg',
+      image: '/images/servicios/tecnologias/tecnologia-03.webp',
       title: 'Automatización de Procesos',
       description: 'Tecnología automatizada para máxima eficiencia y precisión'
     },
     {
-      image: '/images/servicios/tecnologias/tecnologia-04.jpg',
+      image: '/images/servicios/tecnologias/tecnologia-04.webp',
       title: 'Control de Calidad Avanzado',
       description: 'Sistemas de control para garantizar la excelencia en cada proyecto'
     },
     {
-      image: '/images/servicios/tecnologias/tecnologia-05.jpg',
+      image: '/images/servicios/tecnologias/tecnologia-05.webp',
       title: 'Innovación en Preprensa Digital',
       description: 'Tecnología de punta en preparación de archivos e impresión'
     }
