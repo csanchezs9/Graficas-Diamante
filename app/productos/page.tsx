@@ -415,31 +415,31 @@ export default function ProductosPage() {
 
                   {/* Back - Description */}
                   <div
-                    className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl bg-gray-500 p-6 flex flex-col justify-center card-back"
+                    className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl bg-gray-500 p-3 md:p-6 flex flex-col justify-center card-back"
                     style={{
                       backfaceVisibility: 'hidden',
                       transform: 'rotateY(180deg)'
                     }}
                   >
-                    <div className="text-center">
-                      <h3 className="text-xl font-bold text-white mb-3">
+                    <div className="text-center overflow-y-auto max-h-full">
+                      <h3 className="text-sm md:text-xl font-bold text-white mb-2 md:mb-3 leading-tight">
                         {product.name}
                       </h3>
-                      <p className="text-white text-sm mb-4 leading-relaxed">
+                      <p className="text-white text-[10px] md:text-sm mb-2 md:mb-4 leading-tight md:leading-relaxed line-clamp-3 md:line-clamp-none">
                         {product.description}
                       </p>
-                      <ul className="space-y-2">
+                      <ul className="space-y-1 md:space-y-2 hidden md:block">
                         {product.features.map((feature, i) => (
                           <li
                             key={i}
-                            className="text-sm text-white flex items-center justify-center gap-2"
+                            className="text-xs md:text-sm text-white flex items-center justify-center gap-2"
                           >
                             <span className="w-1.5 h-1.5 bg-[#0046FF] rounded-full flex-shrink-0" />
                             <span className="text-left">{feature}</span>
                           </li>
                         ))}
                       </ul>
-                      <p className="text-sm text-white mt-3 font-semibold bg-[#0046FF] px-4 py-1.5 rounded-full inline-block">Ampliar</p>
+                      <p className="text-[10px] md:text-sm text-white mt-2 md:mt-3 font-semibold bg-[#0046FF] px-3 md:px-4 py-1 md:py-1.5 rounded-full inline-block">Ampliar</p>
                     </div>
 
                     {/* Blue accent line */}
@@ -500,31 +500,31 @@ export default function ProductosPage() {
 
                   {/* Back - Description */}
                   <div
-                    className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl bg-gray-500 p-6 flex flex-col justify-center card-back"
+                    className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl bg-gray-500 p-3 md:p-6 flex flex-col justify-center card-back"
                     style={{
                       backfaceVisibility: 'hidden',
                       transform: 'rotateY(180deg)'
                     }}
                   >
-                    <div className="text-center">
-                      <h3 className="text-xl font-bold text-white mb-3">
+                    <div className="text-center overflow-y-auto max-h-full">
+                      <h3 className="text-sm md:text-xl font-bold text-white mb-2 md:mb-3 leading-tight">
                         {product.name}
                       </h3>
-                      <p className="text-white text-sm mb-4 leading-relaxed">
+                      <p className="text-white text-[10px] md:text-sm mb-2 md:mb-4 leading-tight md:leading-relaxed line-clamp-3 md:line-clamp-none">
                         {product.description}
                       </p>
-                      <ul className="space-y-2">
+                      <ul className="space-y-1 md:space-y-2 hidden md:block">
                         {product.features.map((feature, i) => (
                           <li
                             key={i}
-                            className="text-sm text-white flex items-center justify-center gap-2"
+                            className="text-xs md:text-sm text-white flex items-center justify-center gap-2"
                           >
                             <span className="w-1.5 h-1.5 bg-[#0046FF] rounded-full flex-shrink-0" />
                             <span className="text-left">{feature}</span>
                           </li>
                         ))}
                       </ul>
-                      <p className="text-sm text-white mt-3 font-semibold bg-[#0046FF] px-4 py-1.5 rounded-full inline-block">Ampliar</p>
+                      <p className="text-[10px] md:text-sm text-white mt-2 md:mt-3 font-semibold bg-[#0046FF] px-3 md:px-4 py-1 md:py-1.5 rounded-full inline-block">Ampliar</p>
                     </div>
 
                     {/* Blue accent line */}
