@@ -205,9 +205,9 @@ function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[
                     boxShadow: '0 0 30px rgba(0, 70, 255, 0.3)',
                   }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-4 md:px-6 py-3 md:py-5 bg-[#0046FF] text-white rounded-xl shadow-lg hover:bg-[#0039CC] transition-colors"
+                  className="px-5 md:px-6 py-4 md:py-5 bg-[#0046FF] text-white rounded-xl shadow-lg hover:bg-[#0039CC] transition-colors"
                 >
-                  <p className="text-xs md:text-sm lg:text-base leading-relaxed">
+                  <p className="text-sm md:text-sm lg:text-base leading-relaxed">
                     {tech.buttonText}
                   </p>
                 </motion.div>

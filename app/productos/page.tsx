@@ -415,17 +415,17 @@ export default function ProductosPage() {
 
                   {/* Back - Description */}
                   <div
-                    className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl bg-gray-500 p-3 md:p-6 flex flex-col justify-center card-back"
+                    className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl bg-gray-500 p-4 md:p-6 flex flex-col justify-center card-back"
                     style={{
                       backfaceVisibility: 'hidden',
                       transform: 'rotateY(180deg)'
                     }}
                   >
                     <div className="text-center overflow-y-auto max-h-full">
-                      <h3 className="text-sm md:text-xl font-bold text-white mb-2 md:mb-3 leading-tight">
+                      <h3 className="text-base md:text-xl font-bold text-white mb-2 md:mb-3 leading-tight">
                         {product.name}
                       </h3>
-                      <p className="text-white text-[10px] md:text-sm mb-2 md:mb-4 leading-tight md:leading-relaxed line-clamp-3 md:line-clamp-none">
+                      <p className="text-white text-xs md:text-sm mb-2 md:mb-4 leading-tight md:leading-relaxed line-clamp-3 md:line-clamp-none">
                         {product.description}
                       </p>
                       <ul className="space-y-1 md:space-y-2 hidden md:block">
@@ -439,7 +439,7 @@ export default function ProductosPage() {
                           </li>
                         ))}
                       </ul>
-                      <p className="text-[10px] md:text-sm text-white mt-2 md:mt-3 font-semibold bg-[#0046FF] px-3 md:px-4 py-1 md:py-1.5 rounded-full inline-block">Ampliar</p>
+                      <p className="text-xs md:text-sm text-white mt-2 md:mt-3 font-semibold bg-[#0046FF] px-3 md:px-4 py-1 md:py-1.5 rounded-full inline-block">Ampliar</p>
                     </div>
 
                     {/* Blue accent line */}
@@ -500,17 +500,17 @@ export default function ProductosPage() {
 
                   {/* Back - Description */}
                   <div
-                    className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl bg-gray-500 p-3 md:p-6 flex flex-col justify-center card-back"
+                    className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl bg-gray-500 p-4 md:p-6 flex flex-col justify-center card-back"
                     style={{
                       backfaceVisibility: 'hidden',
                       transform: 'rotateY(180deg)'
                     }}
                   >
                     <div className="text-center overflow-y-auto max-h-full">
-                      <h3 className="text-sm md:text-xl font-bold text-white mb-2 md:mb-3 leading-tight">
+                      <h3 className="text-base md:text-xl font-bold text-white mb-2 md:mb-3 leading-tight">
                         {product.name}
                       </h3>
-                      <p className="text-white text-[10px] md:text-sm mb-2 md:mb-4 leading-tight md:leading-relaxed line-clamp-3 md:line-clamp-none">
+                      <p className="text-white text-xs md:text-sm mb-2 md:mb-4 leading-tight md:leading-relaxed line-clamp-3 md:line-clamp-none">
                         {product.description}
                       </p>
                       <ul className="space-y-1 md:space-y-2 hidden md:block">
@@ -524,7 +524,7 @@ export default function ProductosPage() {
                           </li>
                         ))}
                       </ul>
-                      <p className="text-[10px] md:text-sm text-white mt-2 md:mt-3 font-semibold bg-[#0046FF] px-3 md:px-4 py-1 md:py-1.5 rounded-full inline-block">Ampliar</p>
+                      <p className="text-xs md:text-sm text-white mt-2 md:mt-3 font-semibold bg-[#0046FF] px-3 md:px-4 py-1 md:py-1.5 rounded-full inline-block">Ampliar</p>
                     </div>
 
                     {/* Blue accent line */}
@@ -624,7 +624,9 @@ export default function ProductosPage() {
                     className="flex gap-4"
                   >
                     <a
-                      href="/contacto"
+                      href="https://wa.me/573127201607?text=%C2%A1Hola!%20Me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n."
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 px-6 md:px-8 py-3 md:py-4 bg-[#0046FF] text-white text-sm md:text-base font-semibold rounded-xl hover:bg-[#0039CC] transition-all text-center shadow-lg hover:shadow-xl"
                     >
                       Solicitar cotización
@@ -672,7 +674,9 @@ export default function ProductosPage() {
               Contáctanos y te ayudamos a crear la solución perfecta para tu marca
             </p>
             <a
-              href="/contacto"
+              href="https://wa.me/573127201607?text=%C2%A1Hola!%20Me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n."
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block px-6 md:px-8 py-3 md:py-4 bg-white text-[#0046FF] text-sm md:text-base font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200 shadow-xl"
             >
               Solicitar cotización
