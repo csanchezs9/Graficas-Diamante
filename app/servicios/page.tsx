@@ -129,7 +129,7 @@ function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[
             whileInView={!isFirst ? { opacity: 1, x: 0 } : undefined}
             viewport={!isFirst ? { once: true } : undefined}
             transition={{ duration: 0.5, delay: isFirst ? 0.2 : 0.1 }}
-            className={`relative ${!isEven ? 'lg:order-2' : ''}`}
+            className={`relative order-2 lg:order-none ${!isEven ? 'lg:order-2' : ''}`}
           >
             <div className="relative w-full max-w-xs md:max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl">
 
@@ -161,7 +161,7 @@ function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[
             whileInView={!isFirst ? { opacity: 1, x: 0 } : undefined}
             viewport={!isFirst ? { once: true } : undefined}
             transition={{ duration: 0.5, delay: isFirst ? 0.3 : 0.2 }}
-            className={`relative ${!isEven ? 'lg:order-1' : ''}`}
+            className={`relative order-1 lg:order-none ${!isEven ? 'lg:order-1' : ''}`}
           >
             <div>
               {/* Badge */}

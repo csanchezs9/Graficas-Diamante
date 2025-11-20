@@ -353,7 +353,7 @@ export default function ProductosPage() {
       <section className="py-8 px-6">
         <div className="max-w-7xl mx-auto">
           {/* First row - 4 products */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {products.slice(0, 4).map((product, index) => (
               <motion.div
                 key={product.id}
@@ -374,14 +374,14 @@ export default function ProductosPage() {
                     style={{ backfaceVisibility: 'hidden' }}
                   >
                     {/* Title at top with white background */}
-                    <div className="absolute top-0 left-0 right-0 pt-8 pb-4 px-6 bg-white z-10">
-                      <h3 className="text-xl font-bold text-gray-900 text-center">
+                    <div className="absolute top-0 left-0 right-0 pt-4 md:pt-8 pb-2 md:pb-4 px-2 md:px-6 bg-white z-10">
+                      <h3 className="text-sm md:text-xl font-bold text-gray-900 text-center leading-tight">
                         {product.name}
                       </h3>
                     </div>
 
                     {/* Image container with proper spacing */}
-                    <div className="absolute inset-0 pt-20 pb-16">
+                    <div className="absolute inset-0 pt-14 md:pt-20 pb-12 md:pb-16">
                       <div className="relative w-full h-full">
                         <Image
                           src={product.image}
@@ -395,8 +395,8 @@ export default function ProductosPage() {
                     </div>
 
                     {/* Ver más at bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <p className="text-sm font-medium bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">Ver más</p>
+                    <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6">
+                      <p className="text-xs md:text-sm font-medium bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">Ver más</p>
                     </div>
                   </div>
 
@@ -438,7 +438,7 @@ export default function ProductosPage() {
           </div>
 
           {/* Second row - 3 products centered */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 lg:max-w-4xl lg:mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-4 md:mt-6 lg:max-w-4xl lg:mx-auto">
             {products.slice(4).map((product, index) => (
               <motion.div
                 key={product.id}
@@ -459,14 +459,14 @@ export default function ProductosPage() {
                     style={{ backfaceVisibility: 'hidden' }}
                   >
                     {/* Title at top with white background */}
-                    <div className="absolute top-0 left-0 right-0 pt-8 pb-4 px-6 bg-white z-10">
-                      <h3 className="text-xl font-bold text-gray-900 text-center">
+                    <div className="absolute top-0 left-0 right-0 pt-4 md:pt-8 pb-2 md:pb-4 px-2 md:px-6 bg-white z-10">
+                      <h3 className="text-sm md:text-xl font-bold text-gray-900 text-center leading-tight">
                         {product.name}
                       </h3>
                     </div>
 
                     {/* Image container with proper spacing */}
-                    <div className="absolute inset-0 pt-20 pb-16">
+                    <div className="absolute inset-0 pt-14 md:pt-20 pb-12 md:pb-16">
                       <div className="relative w-full h-full">
                         <Image
                           src={product.image}
@@ -480,8 +480,8 @@ export default function ProductosPage() {
                     </div>
 
                     {/* Ver más at bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <p className="text-sm font-medium bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">Ver más</p>
+                    <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6">
+                      <p className="text-xs md:text-sm font-medium bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">Ver más</p>
                     </div>
                   </div>
 
