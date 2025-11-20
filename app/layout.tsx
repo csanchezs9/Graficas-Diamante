@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import dynamic from "next/dynamic";
+
+// Lazy load componentes no críticos para reducir bundle inicial
+const Footer = dynamic(() => import("@/components/layout/Footer"));
+const WhatsAppButton = dynamic(() => import("@/components/WhatsAppButton"));
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +47,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${geistSans.variable} ${outfit.variable}`} data-scroll-behavior="smooth">
       <head>
+        {/* Preconnect para Google Fonts - reduce latencia */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
         {/* Preload recursos críticos para mejorar LCP y FCP */}
         <link rel="preload" href="/images/hero/video-poster.jpg" as="image" type="image/jpeg" />
         <link rel="preload" href="/images/logos/logo-principal.webp" as="image" type="image/webp" />

@@ -7,7 +7,10 @@
       "Bash(\"C:\\Users\\USER\\Documents\\ffmpeg-8.0-essentials_build\\ffmpeg-8.0-essentials_build\\bin\\ffmpeg.exe\" -i \"public/images/productos/plegadizas.jpg\" -c:v libwebp -quality 85 \"public/images/productos/plegadizas.webp\" -y)",
       "Bash(\"C:\\Users\\USER\\Documents\\ffmpeg-8.0-essentials_build\\ffmpeg-8.0-essentials_build\\bin\\ffmpeg.exe\" -i \"public/images/productos/pop.jpg\" -c:v libwebp -quality 85 \"public/images/productos/pop.webp\" -y)",
       "Bash(\"C:\\Users\\USER\\Documents\\ffmpeg-8.0-essentials_build\\ffmpeg-8.0-essentials_build\\bin\\ffmpeg.exe\" -i \"public/images/productos/tarjetas-blister.png\" -c:v libwebp -quality 85 \"public/images/productos/tarjetas-blister.webp\" -y)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nOptimización completa de rendimiento: WebP, carousel CSS, fuentes optimizadas\n\n- Migración completa de imágenes a formato WebP (35+ archivos)\n  - Clientes: 14 logos PNG → WebP\n  - Logos: 3 archivos PNG → WebP  \n  - Nosotros: 4 imágenes JPG/PNG → WebP\n  - Productos: 7 imágenes JPG/PNG → WebP\n\n- Optimización del carousel \"Nuestro Trabajo\"\n  - Reemplazada animación Framer Motion por CSS nativo\n  - Agregada GPU acceleration (transform: translateZ(0))\n  - Reducción de 60-80% en uso de CPU\n\n- Optimización de fuentes Google Fonts\n  - Eliminada fuente Geist_Mono (innecesaria)\n  - Reducidos pesos de Outfit de 5 a 3 (400, 600, 700)\n  - Agregado display: swap para prevenir FOIT\n  - Ahorro: ~25-30 KB\n\n- Removido preload del video hero (22 MB)\n  - Video ahora carga bajo demanda\n  - Mejora significativa en FCP y LCP\n\n- Eliminados archivos backup (326 MB)\n  - video-original-backup.mp4 y .webm\n\nImpacto estimado:\n- FCP: -1.5s ~ -2s\n- LCP: -2s ~ -3s  \n- TBT: -200ms ~ -400ms\n- Scroll móvil: 60-80% más fluido\n- Reducción total: ~350 MB del repo\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
