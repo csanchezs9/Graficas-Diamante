@@ -91,8 +91,8 @@ function PackagingCollage() {
   const itemsPerPage = isMobile ? 2 : 4 // 2 en móvil, 4 en desktop
   const totalItems = 16 // 16 imágenes
   const totalPages = Math.ceil(totalItems / itemsPerPage)
-  const imageSize = isMobile ? 160 : 280 // Más pequeño en móvil
-  const gap = isMobile ? 12 : 16 // gap más pequeño en móvil
+  const imageSize = isMobile ? 140 : 280 // Más pequeño en móvil para que quepan 2
+  const gap = isMobile ? 16 : 16 // gap consistente
   const containerWidth = (imageSize * itemsPerPage) + (gap * (itemsPerPage - 1))
 
   const nextSlide = () => {
@@ -128,21 +128,21 @@ function PackagingCollage() {
       </div>
 
       {/* Carousel Container */}
-      <div className="relative w-full mx-auto px-4 md:px-6">
-        <div className="relative h-[200px] md:h-[320px] lg:h-[480px] flex items-center justify-center" style={{ maxWidth: `${containerWidth + (isMobile ? 80 : 160)}px`, margin: '0 auto' }}>
+      <div className="relative w-full mx-auto px-2 md:px-6 max-w-screen-xl">
+        <div className="relative h-[180px] md:h-[320px] lg:h-[480px] flex items-center justify-center">
           {/* Previous Button */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 z-20 w-10 h-10 md:w-14 md:h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-[#0046FF] hover:text-white transition-all duration-300 group"
+            className="absolute left-0 z-20 w-8 h-8 md:w-14 md:h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-[#0046FF] hover:text-white transition-all duration-300 group flex-shrink-0"
             aria-label="Previous"
           >
-            <svg className="w-5 h-5 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           {/* Carousel Track - Todas las imágenes pre-renderizadas */}
-          <div className="overflow-hidden mx-12 md:mx-20" style={{ maxWidth: `${containerWidth}px` }}>
+          <div className="overflow-hidden mx-10 md:mx-20 flex-1" style={{ maxWidth: `${containerWidth}px` }}>
             <motion.div
               className="flex"
               animate={{
@@ -194,10 +194,10 @@ function PackagingCollage() {
           {/* Next Button */}
           <button
             onClick={nextSlide}
-            className="absolute right-0 z-20 w-10 h-10 md:w-14 md:h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-[#0046FF] hover:text-white transition-all duration-300 group"
+            className="absolute right-0 z-20 w-8 h-8 md:w-14 md:h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-[#0046FF] hover:text-white transition-all duration-300 group flex-shrink-0"
             aria-label="Next"
           >
-            <svg className="w-5 h-5 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 md:w-7 md:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
