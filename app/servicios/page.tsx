@@ -118,10 +118,10 @@ function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[
     <motion.section
       ref={sectionRef}
       {...animationProps}
-      className={`relative flex items-center overflow-hidden ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} ${isFirst ? 'pt-8 md:pt-12' : 'py-8 md:py-12'} ${isLast ? 'pb-16 md:pb-20' : ''}`}
+      className={`relative flex items-center overflow-hidden ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} ${isFirst ? 'pt-6 md:pt-8 lg:pt-12' : 'py-6 md:py-8 lg:py-12'} ${isLast ? 'pb-12 md:pb-16 lg:pb-20' : ''}`}
     >
       <div className="max-w-7xl mx-auto px-6 w-full">
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
           {/* Video Container */}
           <motion.div
             initial={{ opacity: 0, x: isEven ? -30 : 30 }}
@@ -131,7 +131,7 @@ function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[
             transition={{ duration: 0.5, delay: isFirst ? 0.2 : 0.1 }}
             className={`relative ${!isEven ? 'lg:order-2' : ''}`}
           >
-            <div className="relative w-full max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative w-full max-w-xs md:max-w-md mx-auto rounded-2xl overflow-hidden shadow-2xl">
 
               {/* Glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-[#0046FF] to-[#0046FF]/50 rounded-2xl blur-xl opacity-30" />
@@ -172,12 +172,12 @@ function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[
               </div>
 
               {/* Title */}
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-2">
                 {tech.title}
               </h2>
 
               {/* Subtitle */}
-              <h3 className="text-xl md:text-2xl font-semibold text-[#0046FF] mb-3">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-[#0046FF] mb-3">
                 {tech.subtitle}
               </h3>
 
@@ -193,8 +193,7 @@ function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[
                   alt="Gráficas Diamante"
                   width={120}
                   height={120}
-                  className="opacity-80"
-                  style={{ width: '120px', height: 'auto' }}
+                  className="w-20 md:w-[120px] h-auto opacity-80"
                 />
               </div>
 
@@ -206,9 +205,9 @@ function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[
                     boxShadow: '0 0 30px rgba(0, 70, 255, 0.3)',
                   }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-6 py-5 bg-[#0046FF] text-white rounded-xl shadow-lg hover:bg-[#0039CC] transition-colors"
+                  className="px-4 md:px-6 py-3 md:py-5 bg-[#0046FF] text-white rounded-xl shadow-lg hover:bg-[#0039CC] transition-colors"
                 >
-                  <p className="text-sm md:text-base leading-relaxed">
+                  <p className="text-xs md:text-sm lg:text-base leading-relaxed">
                     {tech.buttonText}
                   </p>
                 </motion.div>

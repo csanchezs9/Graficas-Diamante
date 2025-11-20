@@ -45,8 +45,8 @@ export default function Header() {
           : 'bg-gradient-to-b from-blue-50/50 to-white border-b border-blue-100'
       }`}
     >
-      <div className="w-full px-16">
-        <div className="flex items-center justify-between h-20">
+      <div className="w-full px-4 md:px-16">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
@@ -54,7 +54,7 @@ export default function Header() {
               alt="Gráficas Diamante"
               width={200}
               height={70}
-              className="h-16 w-auto"
+              className="h-12 md:h-16 w-auto"
               priority
             />
           </Link>

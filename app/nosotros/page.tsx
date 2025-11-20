@@ -52,7 +52,7 @@ function AccordionItem({ value, index }: { value: { title: string; description: 
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+        className="w-full px-4 md:px-6 py-4 md:py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
       >
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-lg bg-[#0046FF]/10 text-[#0046FF] flex items-center justify-center flex-shrink-0">
@@ -275,12 +275,12 @@ export default function NosotrosPage() {
 
         {/* Animated circles */}
         <motion.div
-          className="absolute w-[600px] h-[600px] rounded-full border border-[#0046FF]/20"
+          className="absolute w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full border border-[#0046FF]/20"
           animate={isHeroVisible ? { rotate: 360 } : { rotate: 0 }}
           transition={{ duration: 30, repeat: isHeroVisible ? Infinity : 0, ease: "linear" }}
         />
         <motion.div
-          className="absolute w-[400px] h-[400px] rounded-full border border-[#0046FF]/30"
+          className="absolute w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full border border-[#0046FF]/30"
           animate={isHeroVisible ? { rotate: -360 } : { rotate: 0 }}
           transition={{ duration: 20, repeat: isHeroVisible ? Infinity : 0, ease: "linear" }}
         />
@@ -302,13 +302,12 @@ export default function NosotrosPage() {
                 alt="Gráficas Diamante"
                 width={100}
                 height={100}
-                style={{ width: 'auto', height: 'auto' }}
-                className="mx-auto"
+                className="w-[60px] md:w-auto h-auto mx-auto"
               />
             </motion.div>
 
             <motion.h1
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6"
+              className="text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-gray-900 mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -339,10 +338,10 @@ export default function NosotrosPage() {
                 href="#historia"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#0046FF] text-white font-semibold rounded-xl hover:bg-[#0039CC] transition-colors"
+                className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-[#0046FF] text-white text-sm md:text-base font-semibold rounded-xl hover:bg-[#0039CC] transition-colors"
               >
                 Conoce nuestra historia
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </motion.a>
@@ -367,7 +366,7 @@ export default function NosotrosPage() {
       </motion.section>
 
       {/* Stats Section */}
-      <section ref={statsRef} className="relative py-24 bg-gradient-to-b from-white via-[#0046FF]/5 to-white overflow-hidden">
+      <section ref={statsRef} className="relative py-12 md:py-16 lg:py-24 bg-gradient-to-b from-white via-[#0046FF]/5 to-white overflow-hidden">
         {/* Background decorations */}
         <motion.div
           className="absolute top-10 left-1/4 w-64 h-64 bg-[#0046FF]/10 rounded-full blur-3xl"
@@ -387,7 +386,7 @@ export default function NosotrosPage() {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -406,10 +405,10 @@ export default function NosotrosPage() {
                     repeat: isStatsVisible ? Infinity : 0,
                     ease: "easeInOut"
                   }}
-                  className="relative p-8 rounded-2xl bg-white shadow-lg border border-gray-100"
+                  className="relative p-6 md:p-8 rounded-2xl bg-white shadow-lg border border-gray-100"
                 >
                   {/* Icon decoration */}
-                  <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-[#0046FF] to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#0046FF] to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
                     {index === 0 && (
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -428,7 +427,7 @@ export default function NosotrosPage() {
                   </div>
 
                   {/* Number with gradient */}
-                  <div className="text-5xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">
                     <AnimatedCounter target={stat.number} suffix={stat.suffix} />
                   </div>
 
@@ -451,7 +450,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Timeline Section */}
-      <section id="historia" className="relative py-24 overflow-hidden">
+      <section id="historia" className="relative py-12 md:py-16 lg:py-24 overflow-hidden">
         {/* Background images */}
         <div className="absolute inset-0 z-0">
           <div className="absolute left-0 top-0 w-1/2 h-full opacity-60">
@@ -483,15 +482,15 @@ export default function NosotrosPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12 md:mb-16"
           >
-            <div className="inline-flex items-center gap-6 bg-white/80 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-lg">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+            <div className="flex flex-col md:inline-flex md:flex-row items-center gap-3 md:gap-4 lg:gap-6 bg-white/80 backdrop-blur-sm rounded-2xl px-4 md:px-6 lg:px-8 py-4 md:py-6 shadow-lg max-w-full mx-4">
+              <div className="text-center md:text-left">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-2">
                   Nuestra Historia
                 </h2>
-                <p className="text-lg text-gray-600">
-                  Más de cinco décadas de evolución y excelencia en artes gráficas
+                <p className="text-base md:text-lg text-gray-600">
+                  Más de cinco décadas de evolución y excelencia
                 </p>
               </div>
               <Image
@@ -499,8 +498,7 @@ export default function NosotrosPage() {
                 alt="Gráficas Diamante"
                 width={220}
                 height={80}
-                style={{ width: 'auto', height: 'auto' }}
-                className="flex-shrink-0 -my-6 -mr-4"
+                className="w-32 md:w-auto h-auto flex-shrink-0 md:-my-6 md:-mr-4"
               />
             </div>
           </motion.div>
@@ -523,10 +521,10 @@ export default function NosotrosPage() {
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
                   <motion.div
                     whileHover={{ scale: 1.02, y: -3 }}
-                    className={`inline-block p-5 rounded-xl bg-white/90 backdrop-blur-sm shadow-md border border-gray-100 hover:border-[#0046FF]/50 transition-all max-w-sm ${index % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'}`}
+                    className={`inline-block p-4 md:p-5 rounded-xl bg-white/90 backdrop-blur-sm shadow-md border border-gray-100 hover:border-[#0046FF]/50 transition-all max-w-sm ${index % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'}`}
                   >
-                    <span className="font-bold text-xl bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">{item.year}</span>
-                    <h3 className="text-lg font-semibold text-gray-900 mt-1">{item.event}</h3>
+                    <span className="font-bold text-lg md:text-xl bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">{item.year}</span>
+                    <h3 className="text-base md:text-lg font-semibold text-gray-900 mt-1">{item.event}</h3>
                     <p className="text-gray-600 text-sm mt-2">{item.description}</p>
                   </motion.div>
                 </div>
@@ -574,7 +572,7 @@ export default function NosotrosPage() {
       <section className="relative overflow-hidden">
         <div className="flex flex-col lg:flex-row">
           {/* Left - Accordion */}
-          <div className="w-full lg:w-1/2 py-24 px-6 lg:px-16 bg-gray-50 flex items-center">
+          <div className="w-full lg:w-1/2 py-12 md:py-16 lg:py-24 px-6 lg:px-16 bg-gray-50 flex items-center">
             <div className="max-w-lg mx-auto w-full">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -582,7 +580,7 @@ export default function NosotrosPage() {
                 viewport={{ once: true }}
                 className="mb-8"
               >
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
                   Nuestros Pilares
                 </h2>
                 <p className="text-xl text-gray-600">
@@ -636,7 +634,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Contact Section */}
-      <section ref={contactRef} className="relative py-20 bg-gradient-to-b from-white via-[#0046FF]/5 to-white overflow-hidden">
+      <section ref={contactRef} className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-white via-[#0046FF]/5 to-white overflow-hidden">
         {/* Decorative elements */}
         <motion.div
           className="absolute top-20 left-10 w-72 h-72 bg-[#0046FF]/10 rounded-full blur-3xl"
@@ -664,7 +662,7 @@ export default function NosotrosPage() {
         />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
             {/* Left - Info */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -672,7 +670,7 @@ export default function NosotrosPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
                 ¿Listo para tu próximo{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0046FF] to-cyan-500">
                   proyecto?
@@ -767,7 +765,7 @@ export default function NosotrosPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100"
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-gray-100"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Envíanos un mensaje</h3>
 
@@ -834,7 +832,7 @@ export default function NosotrosPage() {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full px-6 py-3 bg-[#0046FF] text-white font-semibold rounded-xl hover:bg-[#0039CC] transition-colors shadow-lg shadow-[#0046FF]/20"
+                  className="w-full px-5 md:px-6 py-3 bg-[#0046FF] text-white text-sm md:text-base font-semibold rounded-xl hover:bg-[#0039CC] transition-colors shadow-lg shadow-[#0046FF]/20"
                 >
                   Enviar mensaje
                 </motion.button>

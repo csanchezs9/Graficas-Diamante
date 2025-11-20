@@ -79,9 +79,9 @@ function PackagingCollage() {
   const itemsPerPage = 4
   const totalItems = 16 // 16 imágenes (4 páginas × 4)
   const totalPages = Math.ceil(totalItems / itemsPerPage)
-  const imageSize = 400 // Tamaño de cada imagen
-  const gap = 32 // gap-8 = 32px
-  const containerWidth = (imageSize * itemsPerPage) + (gap * (itemsPerPage - 1)) // 1696px
+  const imageSize = 280 // Tamaño de cada imagen (reducido de 400 a 280)
+  const gap = 16 // gap-4 = 16px (reducido de 32 a 16)
+  const containerWidth = (imageSize * itemsPerPage) + (gap * (itemsPerPage - 1)) // 1168px
 
   const nextSlide = () => {
     setCurrentPage((prev) => (prev + 1) % totalPages)
@@ -105,7 +105,7 @@ function PackagingCollage() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4">
             Somos Expertos en{' '}
             <span className="bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">Packaging</span>
           </h2>
@@ -144,7 +144,7 @@ function PackagingCollage() {
             >
               {/* Renderizar las 4 páginas completas */}
               {Array.from({ length: totalPages }).map((_, pageIdx) => (
-                <div key={pageIdx} className="flex gap-8 flex-shrink-0" style={{ width: `${containerWidth}px` }}>
+                <div key={pageIdx} className="flex gap-4 flex-shrink-0" style={{ width: `${containerWidth}px` }}>
                   {Array.from({ length: itemsPerPage }).map((_, itemIdx) => {
                     const imageIndex = pageIdx * itemsPerPage + itemIdx
 
@@ -162,7 +162,7 @@ function PackagingCollage() {
                             src={`/images/productos_sin_fondo/producto-${(imageIndex + 1).toString().padStart(2, '0')}.png`}
                             alt={`Producto ${imageIndex + 1}`}
                             fill
-                            sizes="400px"
+                            sizes="280px"
                             loading={pageIdx === 0 && itemIdx < 2 ? "eager" : "lazy"}
                             className="object-contain"
                             style={{
@@ -338,7 +338,7 @@ export default function ProductosPage() {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4">
               Nuestros <span className="bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">Productos</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -612,7 +612,7 @@ export default function ProductosPage() {
                   >
                     <a
                       href="/contacto"
-                      className="flex-1 px-8 py-4 bg-[#0046FF] text-white font-semibold rounded-xl hover:bg-[#0039CC] transition-all text-center shadow-lg hover:shadow-xl"
+                      className="flex-1 px-6 md:px-8 py-3 md:py-4 bg-[#0046FF] text-white text-sm md:text-base font-semibold rounded-xl hover:bg-[#0039CC] transition-all text-center shadow-lg hover:shadow-xl"
                     >
                       Solicitar cotización
                     </a>
@@ -660,7 +660,7 @@ export default function ProductosPage() {
             </p>
             <a
               href="/contacto"
-              className="inline-block px-8 py-4 bg-white text-[#0046FF] font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200 shadow-xl"
+              className="inline-block px-6 md:px-8 py-3 md:py-4 bg-white text-[#0046FF] text-sm md:text-base font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200 shadow-xl"
             >
               Solicitar cotización
             </a>

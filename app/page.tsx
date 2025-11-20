@@ -163,7 +163,7 @@ function TechnologySlider() {
           >
             <a
               href="/servicios"
-              className="inline-block px-8 py-4 bg-[#0046FF] text-white font-semibold rounded-lg hover:bg-[#0039CC] transition-all duration-200 shadow-xl hover:shadow-2xl hover:scale-105"
+              className="inline-block px-6 md:px-8 py-3 md:py-4 bg-[#0046FF] text-white text-sm md:text-base font-semibold rounded-lg hover:bg-[#0039CC] transition-all duration-200 shadow-xl hover:shadow-2xl hover:scale-105"
             >
               Ver todos los servicios
             </a>
@@ -325,9 +325,9 @@ export default function Home() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="absolute bottom-16 md:bottom-24 left-8 md:left-16 z-10 max-w-lg"
+          className="absolute bottom-16 md:bottom-24 left-4 md:left-8 lg:left-16 z-10 max-w-lg"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-2xl leading-tight mb-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white drop-shadow-2xl leading-tight mb-4 md:mb-6">
             Más de 50 años
             <br />
             Imprimiendo Calidad
@@ -337,10 +337,10 @@ export default function Home() {
             href="#hero-content"
             whileHover={{ scale: 1.05, x: 5 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white/95 backdrop-blur-sm text-gray-900 font-semibold rounded-lg shadow-xl hover:shadow-2xl transition-all"
+            className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-white/95 backdrop-blur-sm text-gray-900 text-sm md:text-base font-semibold rounded-lg shadow-xl hover:shadow-2xl transition-all"
           >
             <span>Descubre más</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </motion.a>
@@ -351,16 +351,16 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+          className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 z-10"
         >
           <a href="#hero-content">
             <motion.div
               animate={isHeroVisible ? { y: [0, 10, 0] } : { y: 0 }}
               transition={{ duration: 2, repeat: isHeroVisible ? Infinity : 0 }}
-              className="flex flex-col items-center gap-2 text-white cursor-pointer"
+              className="flex flex-col items-center gap-1 md:gap-2 text-white cursor-pointer"
             >
-              <span className="text-sm font-medium">Ver más</span>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span className="text-xs md:text-sm font-medium">Ver más</span>
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </motion.div>
@@ -406,10 +406,10 @@ export default function Home() {
                   href="/servicios"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center px-8 py-4 bg-[#0046FF] text-white font-semibold rounded-lg hover:bg-[#0039CC] transition-all shadow-lg"
+                  className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-[#0046FF] text-white text-sm md:text-base font-semibold rounded-lg hover:bg-[#0039CC] transition-all shadow-lg"
                 >
                   Ver servicios
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 md:w-5 md:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </motion.a>
@@ -417,7 +417,7 @@ export default function Home() {
                   href="/productos"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-800 font-semibold rounded-lg border-2 border-gray-200 hover:border-[#0046FF] hover:text-[#0046FF] transition-all"
+                  className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-gray-800 text-sm md:text-base font-semibold rounded-lg border-2 border-gray-200 hover:border-[#0046FF] hover:text-[#0046FF] transition-all"
                 >
                   Ver productos
                 </motion.a>
@@ -466,7 +466,7 @@ export default function Home() {
                       width={300}
                       height={300}
                       priority
-                      className="drop-shadow-2xl"
+                      className="w-[200px] md:w-[300px] h-auto drop-shadow-2xl"
                     />
                   </motion.div>
                 </motion.div>
@@ -476,31 +476,31 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.5 }}
-                  className="absolute top-8 -left-4 bg-white rounded-2xl shadow-xl p-4 border border-gray-100"
+                  className="absolute top-4 md:top-8 -left-2 md:-left-4 bg-white rounded-xl md:rounded-2xl shadow-xl p-2 md:p-4 border border-gray-100"
                 >
-                  <p className="text-3xl font-bold bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">50+</p>
-                  <p className="text-sm text-gray-600">Años de experiencia</p>
+                  <p className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">50+</p>
+                  <p className="text-xs md:text-sm text-gray-600">Años</p>
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.5 }}
-                  className="absolute bottom-8 -right-4 bg-white rounded-2xl shadow-xl p-4 border border-gray-100"
+                  className="absolute bottom-4 md:bottom-8 -right-2 md:-right-4 bg-white rounded-xl md:rounded-2xl shadow-xl p-2 md:p-4 border border-gray-100"
                 >
-                  <p className="text-3xl font-bold bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">100%</p>
-                  <p className="text-sm text-gray-600">Calidad garantizada</p>
+                  <p className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#0046FF] to-cyan-500 bg-clip-text text-transparent">100%</p>
+                  <p className="text-xs md:text-sm text-gray-600">Calidad</p>
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8, duration: 0.5 }}
-                  className="absolute top-1/2 -translate-y-1/2 -right-8 bg-white rounded-2xl shadow-xl p-4 border border-gray-100"
+                  className="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 bg-white rounded-xl md:rounded-2xl shadow-xl p-2 md:p-4 border border-gray-100"
                 >
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <p className="text-sm font-semibold text-gray-700">En línea</p>
+                  <div className="flex items-center gap-1 md:gap-2">
+                    <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse" />
+                    <p className="text-xs md:text-sm font-semibold text-gray-700">En línea</p>
                   </div>
                 </motion.div>
               </div>
@@ -540,10 +540,10 @@ export default function Home() {
                 href="/productos"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#0046FF] text-white font-semibold rounded-lg hover:bg-[#0039CC] transition-all shadow-lg"
+                className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-[#0046FF] text-white text-sm md:text-base font-semibold rounded-lg hover:bg-[#0039CC] transition-all shadow-lg"
               >
                 Ver todos los productos
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </motion.a>
@@ -561,7 +561,7 @@ export default function Home() {
           className="relative"
         >
           <motion.div
-            className="flex gap-8 py-8"
+            className="flex gap-4 md:gap-8 py-8"
             animate={isCarouselVisible ? {
               x: [0, -2000],
             } : { x: 0 }}
@@ -577,7 +577,7 @@ export default function Home() {
                   <motion.div
                     key={`${setIndex}-${i}`}
                     whileHover={{ y: -10 }}
-                    className="relative w-80 h-64 flex-shrink-0 bg-white rounded-xl p-4 shadow-lg"
+                    className="relative w-64 md:w-80 h-48 md:h-64 flex-shrink-0 bg-white rounded-xl p-3 md:p-4 shadow-lg"
                   >
                     <Image
                       src={`/images/productos_sin_fondo/producto-${String(i + 1).padStart(2, '0')}.png`}
@@ -695,7 +695,7 @@ function SimpleClientGrid({ isVisible }: { isVisible: boolean }) {
       style={{ perspective: '1500px' }}
     >
       <motion.div
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4"
+        className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-7 gap-3 md:gap-4"
         animate={{
           rotateX: mousePos.y * -5,
           rotateY: mousePos.x * 5,
@@ -736,7 +736,7 @@ function SimpleClientGrid({ isVisible }: { isVisible: boolean }) {
               }}
             >
               {/* Card con efecto 3D */}
-              <div className="relative h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-gray-700 to-gray-600 border border-gray-500">
+              <div className="relative h-16 md:h-20 rounded-lg overflow-hidden shadow-md bg-gradient-to-br from-gray-700 to-gray-600 border border-gray-500">
                 {/* Shine effect */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-[#0046FF]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100"
