@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Outfit } from "next/font/google";
+import { Geist, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -8,17 +8,14 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -27,8 +24,8 @@ export const metadata: Metadata = {
   keywords: ["imprenta", "impresión offset", "impresión digital", "cajas plegadizas", "catálogos", "Medellín", "Colombia"],
   authors: [{ name: "Gráficas Diamante" }],
   icons: {
-    icon: "/images/logos/logo-pestana.png",
-    apple: "/images/logos/logo-pestana.png",
+    icon: "/images/logos/logo-pestana.webp",
+    apple: "/images/logos/logo-pestana.webp",
   },
   openGraph: {
     title: "Gráficas Diamante - Impresiones de Alta Calidad",
@@ -45,12 +42,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable}`} data-scroll-behavior="smooth">
+    <html lang="es" className={`${geistSans.variable} ${outfit.variable}`} data-scroll-behavior="smooth">
       <head>
         {/* Preload recursos críticos para mejorar LCP y FCP */}
         <link rel="preload" href="/images/hero/video-poster.jpg" as="image" type="image/jpeg" />
-        <link rel="preload" href="/images/logos/logo-principal.png" as="image" type="image/png" />
-        <link rel="preload" href="/images/hero/video.webm" as="video" type="video/webm" />
+        <link rel="preload" href="/images/logos/logo-principal.webp" as="image" type="image/webp" />
       </head>
       <body className="antialiased">
         <Header />

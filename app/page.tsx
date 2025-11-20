@@ -5,14 +5,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 
-// Dynamic import REAL - crea un chunk separado para TechnologySlider + framer-motion
+// Dynamic imports con lazy loading
 const TechnologySlider = dynamic(() => import('./components/TechnologySlider'), {
   loading: () => (
     <div className="relative h-[600px] md:h-[700px] lg:h-[800px] bg-black flex items-center justify-center">
       <div className="animate-pulse text-white text-xl">Cargando servicios...</div>
     </div>
   ),
-  ssr: false // No SSR para reducir bundle inicial
+  ssr: false
 })
 
 export default function Home() {
@@ -302,7 +302,7 @@ export default function Home() {
                     }}
                   >
                     <Image
-                      src="/images/logos/logo-pestana.png"
+                      src="/images/logos/logo-pestana.webp"
                       alt="Gráficas Diamante"
                       width={300}
                       height={300}
@@ -399,26 +399,20 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative"
+          className="relative overflow-hidden"
         >
-          <motion.div
-            className="flex gap-4 md:gap-8 py-8"
-            animate={isCarouselVisible ? {
-              x: [0, -1680],
-            } : { x: 0 }}
-            transition={{
-              duration: 25,
-              repeat: isCarouselVisible ? Infinity : 0,
-              ease: "linear",
+          <div
+            className={`flex gap-4 md:gap-8 py-8 ${isCarouselVisible ? 'animate-carousel' : ''}`}
+            style={{
+              willChange: isCarouselVisible ? 'transform' : 'auto'
             }}
           >
             {[...Array(2)].map((_, setIndex) => (
               <React.Fragment key={setIndex}>
                 {Array.from({ length: 16 }, (_, i) => (
-                  <motion.div
+                  <div
                     key={`${setIndex}-${i}`}
-                    whileHover={{ y: -10 }}
-                    className="relative w-64 md:w-80 h-48 md:h-64 flex-shrink-0 bg-white rounded-xl p-3 md:p-4 shadow-lg"
+                    className="relative w-64 md:w-80 h-48 md:h-64 flex-shrink-0 bg-white rounded-xl p-3 md:p-4 shadow-lg hover:shadow-xl transition-shadow"
                   >
                     <Image
                       src={`/images/productos_sin_fondo/producto-${String(i + 1).padStart(2, '0')}.webp`}
@@ -427,19 +421,16 @@ export default function Home() {
                       sizes="320px"
                       loading={setIndex === 0 && i < 3 ? "eager" : "lazy"}
                       className="object-contain p-2"
-                      style={{
-                        filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1))',
-                      }}
                     />
-                  </motion.div>
+                  </div>
                 ))}
               </React.Fragment>
             ))}
-          </motion.div>
+          </div>
 
           {/* Gradient overlays */}
-          <div className="absolute top-0 left-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none" />
-          <div className="absolute top-0 right-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none" />
+          <div className="absolute top-0 left-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none z-10" />
+          <div className="absolute top-0 right-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none z-10" />
         </motion.div>
       </section>
 
@@ -473,20 +464,20 @@ export default function Home() {
 
 function SimpleClientGrid({ isVisible }: { isVisible: boolean }) {
   const clients = [
-    { name: 'Santa Elena', logo: '/images/clientes/santa-elena.png' },
-    { name: 'Avon', logo: '/images/clientes/avon.png' },
-    { name: 'San Fiorino', logo: '/images/clientes/san-fiorino.png' },
-    { name: 'Pecoda', logo: '/images/clientes/pecoda.png' },
-    { name: 'Corona', logo: '/images/clientes/corona.png' },
-    { name: 'Gricoat', logo: '/images/clientes/gricoat.png' },
-    { name: 'Atenea', logo: '/images/clientes/atenea.png' },
-    { name: 'Nutresa', logo: '/images/clientes/nutresa.png' },
-    { name: 'Chocolates', logo: '/images/clientes/chocolates.png' },
-    { name: 'Prebel', logo: '/images/clientes/prebel.png' },
-    { name: 'Leonisa', logo: '/images/clientes/leonisa.png' },
-    { name: 'Ecar', logo: '/images/clientes/ecar.png' },
-    { name: 'Crystal', logo: '/images/clientes/crystal.png' },
-    { name: 'Familia', logo: '/images/clientes/familia.png' },
+    { name: 'Santa Elena', logo: '/images/clientes/santa-elena.webp' },
+    { name: 'Avon', logo: '/images/clientes/avon.webp' },
+    { name: 'San Fiorino', logo: '/images/clientes/san-fiorino.webp' },
+    { name: 'Pecoda', logo: '/images/clientes/pecoda.webp' },
+    { name: 'Corona', logo: '/images/clientes/corona.webp' },
+    { name: 'Gricoat', logo: '/images/clientes/gricoat.webp' },
+    { name: 'Atenea', logo: '/images/clientes/atenea.webp' },
+    { name: 'Nutresa', logo: '/images/clientes/nutresa.webp' },
+    { name: 'Chocolates', logo: '/images/clientes/chocolates.webp' },
+    { name: 'Prebel', logo: '/images/clientes/prebel.webp' },
+    { name: 'Leonisa', logo: '/images/clientes/leonisa.webp' },
+    { name: 'Ecar', logo: '/images/clientes/ecar.webp' },
+    { name: 'Crystal', logo: '/images/clientes/crystal.webp' },
+    { name: 'Familia', logo: '/images/clientes/familia.webp' },
   ]
 
   const containerRef = React.useRef<HTMLDivElement>(null)

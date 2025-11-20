@@ -298,7 +298,7 @@ export default function NosotrosPage() {
               className="mb-6"
             >
               <Image
-                src="/images/logos/logo-pestana.png"
+                src="/images/logos/logo-pestana.webp"
                 alt="Gráficas Diamante"
                 width={100}
                 height={100}
@@ -455,7 +455,7 @@ export default function NosotrosPage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute left-0 top-0 w-1/2 h-full opacity-60">
             <Image
-              src="/images/nosotros/us1.jpg"
+              src="/images/nosotros/us1.webp"
               alt="Historia Gráficas Diamante"
               fill
               sizes="50vw"
@@ -465,7 +465,7 @@ export default function NosotrosPage() {
           </div>
           <div className="absolute right-0 top-0 w-1/2 h-full opacity-60">
             <Image
-              src="/images/nosotros/us2.jpg"
+              src="/images/nosotros/us2.webp"
               alt="Historia Gráficas Diamante"
               fill
               sizes="50vw"
@@ -494,7 +494,7 @@ export default function NosotrosPage() {
                 </p>
               </div>
               <Image
-                src="/images/logos/logo-principal.png"
+                src="/images/logos/logo-principal.webp"
                 alt="Gráficas Diamante"
                 width={220}
                 height={80}
@@ -556,7 +556,7 @@ export default function NosotrosPage() {
               transition={{ duration: 0.5, delay: i * 0.05 }}
             >
               <Image
-                src="/images/logos/logo-pestana.png"
+                src="/images/logos/logo-pestana.webp"
                 alt="Gráficas Diamante"
                 width={40}
                 height={40}
@@ -599,7 +599,7 @@ export default function NosotrosPage() {
           {/* Right - Image full height */}
           <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-0">
             <Image
-              src="/images/nosotros/local.jpg"
+              src="/images/nosotros/local.webp"
               alt="Local Gráficas Diamante"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -621,7 +621,7 @@ export default function NosotrosPage() {
               transition={{ duration: 0.5, delay: i * 0.05 }}
             >
               <Image
-                src="/images/logos/logo-pestana.png"
+                src="/images/logos/logo-pestana.webp"
                 alt="Gráficas Diamante"
                 width={40}
                 height={40}

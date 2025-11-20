@@ -17,7 +17,7 @@ const products: Product[] = [
   {
     id: 1,
     name: 'Cajas Plegadizas',
-    image: '/images/productos/plegadizas.jpg',
+    image: '/images/productos/plegadizas.webp',
     description: 'Excelentes impresiones que mejoran la presentación del producto. Almacenamiento eficiente por capacidad de doblamiento.',
     fullDescription: 'Pueden lograrse excelentes impresiones, lo que mejora la presentación del producto, pues además dan muy buena apariencia al exhibirse. Protegen al producto. Se almacenan fácilmente debido a que pueden ser dobladas, ocupando un mínimo de espacio.',
     features: ['Excelentes impresiones que mejoran la presentación', 'Almacenamiento eficiente por capacidad de doblamiento', 'Protección durante exhibición y transporte']
@@ -25,7 +25,7 @@ const products: Product[] = [
   {
     id: 2,
     name: 'Catálogos',
-    image: '/images/productos/catalogo.jpg',
+    image: '/images/productos/catalogo.webp',
     description: 'Importantes medios publicitarios y de promoción. Presentación detallada de bienes y servicios.',
     fullDescription: 'Éstos son de gran utilidad, porque se convierten en importantes medios publicitarios y de promoción para la venta de los bienes y/o servicios que brinda la empresa. Son herramientas que permiten la presentación detallada de los productos que ofrece una organización.',
     features: ['Importantes medios publicitarios y de promoción', 'Presentación detallada de bienes y servicios', 'Herramienta efectiva para venta empresarial']
@@ -33,7 +33,7 @@ const products: Product[] = [
   {
     id: 3,
     name: 'Material P.O.P.',
-    image: '/images/productos/pop.jpg',
+    image: '/images/productos/pop.webp',
     description: 'Promoción y difusión de marca, categoría o producto. Posicionamiento de marca efectivo.',
     fullDescription: 'Recursos gráficos, de publicidad para la promoción y difusión de una marca, categoría o producto. Ayuda al posicionamiento de una marca que podría traducirse en un alza en las ventas.',
     features: ['Promoción y difusión de marca, categoría o producto', 'Posicionamiento de marca efectivo', 'Incremento potencial en ventas']
@@ -41,7 +41,7 @@ const products: Product[] = [
   {
     id: 4,
     name: 'Carpetas',
-    image: '/images/productos/carpetas.jpg',
+    image: '/images/productos/carpetas.webp',
     description: 'Impresos personalizados con imágenes, textos y logotipos. Formas recortadas personalizadas.',
     fullDescription: 'Aunque a veces confiamos más en otros medios de comunicación, imprimir carpetas personalizadas puede ofrecer muchos beneficios a cualquier negocio, independientemente de su tamaño. La capacidad de agregar imágenes, texto, logotipos, formas recortadas y una amplia gama de opciones despierta el interés del destinatario en los productos y/o servicios que ofrecemos.',
     features: ['Impresos personalizados con imágenes, textos y logotipos', 'Formas recortadas personalizadas', 'Despiertan interés en productos y servicios']
@@ -49,7 +49,7 @@ const products: Product[] = [
   {
     id: 5,
     name: 'Etiquetas',
-    image: '/images/productos/etiquetas.jpg',
+    image: '/images/productos/etiquetas.webp',
     description: 'Elementos profesionales para transmitir valores de marca con precisión.',
     fullDescription: 'No se trata de hacer una simple etiqueta, se trata de saber qué elementos tenemos a nuestra disposición para convertir una etiqueta común y corriente en una etiqueta de aspecto profesional y que transmita con precisión los valores de una marca o producto.',
     features: ['Elementos profesionales para transmitir valores de marca', 'Aspecto profesional y distintivo', 'Personalización completa']
@@ -57,7 +57,7 @@ const products: Product[] = [
   {
     id: 6,
     name: 'Cuadernos y Libretas',
-    image: '/images/productos/cuaderno.jpg',
+    image: '/images/productos/cuaderno.webp',
     description: 'Herramientas de marketing que promocionan marca con cada uso.',
     fullDescription: 'Los cuadernos y libretas de negocios personalizados son una excelente manera de aumentar el conocimiento de la marca. Cuando distribuye cuadernos a clientes, empleados y proveedores, ellos promocionan su marca cada vez que los utilizan. Cuantas más personas utilicen los cuadernos y libretas, más exposición tendrá su marca.',
     features: ['Herramientas de marketing que promocionan marca', 'Aumentan visibilidad constante', 'Uso frecuente por clientes y empleados']
@@ -65,7 +65,7 @@ const products: Product[] = [
   {
     id: 7,
     name: 'Tarjetas Blister',
-    image: '/images/productos/tarjetas-blister.png',
+    image: '/images/productos/tarjetas-blister.webp',
     description: 'Empaques económicos con burbujas adheridas a etiquetas para expositores.',
     fullDescription: 'Los blíster se utilizan para adherir burbujas a la etiqueta y ser colgados en expositores y dar visibilidad al producto. Además, son un tipo de embalaje económico, a prueba de robos, a prueba de filtraciones de sustancias y que ofrece buena protección al producto.',
     features: ['Empaques económicos', 'Burbujas adheridas a etiquetas para expositores', 'Protección contra robos y filtraciones', 'Buena presentación visual']

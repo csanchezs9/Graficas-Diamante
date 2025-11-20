@@ -189,7 +189,7 @@ function TechnologySection({ tech, index, isLast }: { tech: typeof technologies[
               {/* Logo pestaña */}
               <div className="mb-4">
                 <Image
-                  src="/images/logos/logo-pestana.png"
+                  src="/images/logos/logo-pestana.webp"
                   alt="Gráficas Diamante"
                   width={120}
                   height={120}

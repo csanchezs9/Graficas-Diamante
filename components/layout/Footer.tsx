@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/">
               <Image
-                src="/images/logos/logo-blanco.png"
+                src="/images/logos/logo-blanco.webp"
                 alt="Gráficas Diamante"
                 width={280}
                 height={100}

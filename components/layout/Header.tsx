@@ -50,7 +50,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/images/logos/logo-principal.png"
+              src="/images/logos/logo-principal.webp"
               alt="Gráficas Diamante"
               width={200}
               height={70}

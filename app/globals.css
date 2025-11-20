@@ -91,6 +91,24 @@ html {
   transform: rotateY(180deg);
 }
 
+/* Optimized Carousel Animation */
+@keyframes carousel-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-1680px);
+  }
+}
+
+.animate-carousel {
+  animation: carousel-scroll 25s linear infinite;
+  /* Use GPU acceleration for better mobile performance */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
