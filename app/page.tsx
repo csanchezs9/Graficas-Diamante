@@ -33,24 +33,27 @@ export default function Home() {
 
     const START_TIME = 0.4
 
-    const seekAndPlay = () => {
+    const seekThenPlay = () => {
+      const playAfterSeek = () => {
+        videoElement.play().catch(() => {})
+      }
+      videoElement.addEventListener('seeked', playAfterSeek, { once: true })
       try {
         videoElement.currentTime = START_TIME
-      } catch {}
-      videoElement.play().catch(() => {})
+      } catch {
+        videoElement.removeEventListener('seeked', playAfterSeek)
+        videoElement.play().catch(() => {})
+      }
     }
 
     if (videoElement.readyState >= 1) {
-      seekAndPlay()
+      seekThenPlay()
     } else {
-      videoElement.addEventListener('loadedmetadata', seekAndPlay, { once: true })
+      videoElement.addEventListener('loadedmetadata', seekThenPlay, { once: true })
     }
 
     const handleEnded = () => {
-      try {
-        videoElement.currentTime = START_TIME
-      } catch {}
-      videoElement.play().catch(() => {})
+      seekThenPlay()
     }
     videoElement.addEventListener('ended', handleEnded)
 
@@ -170,8 +173,8 @@ export default function Home() {
             poster="/images/hero/video-poster.webp"
             className="w-full h-full object-cover"
           >
-            <source src="/images/hero/video.webm" type="video/webm" />
-            <source src="/images/hero/video.mp4" type="video/mp4" />
+            <source src="/images/hero/video.webm#t=0.4" type="video/webm" />
+            <source src="/images/hero/video.mp4#t=0.4" type="video/mp4" />
           </video>
         </div>
 
