@@ -31,39 +31,11 @@ export default function Home() {
     const videoElement = heroVideoRef.current
     if (!videoElement) return
 
-    const START_TIME = 0.4
-
-    const seekThenPlay = () => {
-      const playAfterSeek = () => {
-        videoElement.play().catch(() => {})
-      }
-      videoElement.addEventListener('seeked', playAfterSeek, { once: true })
-      try {
-        videoElement.currentTime = START_TIME
-      } catch {
-        videoElement.removeEventListener('seeked', playAfterSeek)
-        videoElement.play().catch(() => {})
-      }
-    }
-
-    if (videoElement.readyState >= 1) {
-      seekThenPlay()
-    } else {
-      videoElement.addEventListener('loadedmetadata', seekThenPlay, { once: true })
-    }
-
-    const handleEnded = () => {
-      seekThenPlay()
-    }
-    videoElement.addEventListener('ended', handleEnded)
+    videoElement.play().catch(() => {})
 
     const handleVisibilityChange = () => {
-      if (document.hidden) {
-        // NO pausar cuando se oculta, dejar que el navegador lo maneje
-      } else {
-        if (videoElement.paused) {
-          videoElement.play().catch(() => {})
-        }
+      if (!document.hidden && videoElement.paused) {
+        videoElement.play().catch(() => {})
       }
     }
 
@@ -71,7 +43,6 @@ export default function Home() {
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange)
-      videoElement.removeEventListener('ended', handleEnded)
     }
   }, [])
 
@@ -168,13 +139,14 @@ export default function Home() {
           <video
             ref={heroVideoRef}
             muted
+            loop
             playsInline
             preload="auto"
             poster="/images/hero/video-poster.webp"
             className="w-full h-full object-cover"
           >
-            <source src="/images/hero/video.webm#t=0.4" type="video/webm" />
-            <source src="/images/hero/video.mp4#t=0.4" type="video/mp4" />
+            <source src="/images/hero/video.webm" type="video/webm" />
+            <source src="/images/hero/video.mp4" type="video/mp4" />
           </video>
         </div>
 
