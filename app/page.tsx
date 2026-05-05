@@ -146,7 +146,6 @@ export default function Home() {
             className="w-full h-full object-cover"
           >
             <source src="/images/hero/video.webm" type="video/webm" />
-            <source src="/images/hero/video.mp4" type="video/mp4" />
           </video>
         </div>
 
