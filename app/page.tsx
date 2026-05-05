@@ -31,16 +31,32 @@ export default function Home() {
     const videoElement = heroVideoRef.current
     if (!videoElement) return
 
-    // Play inicial
-    videoElement.play().catch(() => {
-      // Ignore autoplay errors
-    })
+    const START_TIME = 0.4
+
+    const seekToStart = () => {
+      try {
+        videoElement.currentTime = START_TIME
+      } catch {}
+    }
+
+    if (videoElement.readyState >= 1) {
+      seekToStart()
+    } else {
+      videoElement.addEventListener('loadedmetadata', seekToStart, { once: true })
+    }
+
+    const handleEnded = () => {
+      seekToStart()
+      videoElement.play().catch(() => {})
+    }
+    videoElement.addEventListener('ended', handleEnded)
+
+    videoElement.play().catch(() => {})
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
         // NO pausar cuando se oculta, dejar que el navegador lo maneje
       } else {
-        // Cuando vuelves, si está pausado, reanuda desde donde estaba
         if (videoElement.paused) {
           videoElement.play().catch(() => {})
         }
@@ -51,6 +67,7 @@ export default function Home() {
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange)
+      videoElement.removeEventListener('ended', handleEnded)
     }
   }, [])
 
@@ -147,7 +164,6 @@ export default function Home() {
           <video
             ref={heroVideoRef}
             muted
-            loop
             playsInline
             preload="auto"
             poster="/images/hero/video-poster.webp"
