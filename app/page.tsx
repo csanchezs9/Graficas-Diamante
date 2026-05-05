@@ -33,25 +33,26 @@ export default function Home() {
 
     const START_TIME = 0.4
 
-    const seekToStart = () => {
+    const seekAndPlay = () => {
       try {
         videoElement.currentTime = START_TIME
       } catch {}
+      videoElement.play().catch(() => {})
     }
 
     if (videoElement.readyState >= 1) {
-      seekToStart()
+      seekAndPlay()
     } else {
-      videoElement.addEventListener('loadedmetadata', seekToStart, { once: true })
+      videoElement.addEventListener('loadedmetadata', seekAndPlay, { once: true })
     }
 
     const handleEnded = () => {
-      seekToStart()
+      try {
+        videoElement.currentTime = START_TIME
+      } catch {}
       videoElement.play().catch(() => {})
     }
     videoElement.addEventListener('ended', handleEnded)
-
-    videoElement.play().catch(() => {})
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
